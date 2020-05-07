@@ -5,7 +5,7 @@
             [matBadgeHidden]="!hasProducts()"
             [matBadge]="getProductsCount()"
             matBadgeOverlap="false"
-            >My Cart</span
+        >My Cart</span
         >
     </mat-toolbar>
     <mat-table
@@ -13,23 +13,23 @@
         [dataSource]="getProducts()"
     >
         <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> ID</mat-header-cell>
             <mat-cell *matCellDef="let item"> {{ item.id }} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
             <mat-cell *matCellDef="let item"> {{ item.name }} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Description</mat-header-cell>
             <mat-cell *matCellDef="let item"> {{ item.description }} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="price">
-            <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Price</mat-header-cell>
             <mat-cell *matCellDef="let item"> {{ item.price }} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="category">
-            <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Category</mat-header-cell>
             <mat-cell *matCellDef="let item"> {{ item.category }} </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

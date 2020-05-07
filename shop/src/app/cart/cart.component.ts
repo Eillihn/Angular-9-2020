@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Product } from './../product/product.module';
-import { CartService } from './cart.service';
+import { ProductModel } from 'src/app/core/models/product.model';
+import { CartService } from 'src/app/core/services/cart.service';
 
 @Component({
     selector: 'app-cart',
@@ -17,12 +17,14 @@ export class CartComponent implements OnInit {
         'category',
     ];
 
-    constructor(public cartService: CartService) {}
+    constructor(public cartService: CartService) {
+    }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+    }
 
-    getProducts(): Product[] {
-        return this.cartService.getProducts() || [];
+    getProducts(): ProductModel[] {
+        return this.cartService.getProducts();
     }
 
     hasProducts(): boolean {

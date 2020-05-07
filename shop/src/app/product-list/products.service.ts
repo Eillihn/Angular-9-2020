@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Product } from './../product/product.module';
-import { Category } from './../product/product-category.model';
+import { ProductModel } from 'src/app/core/models/product.model';
+import { Category } from 'src/app/core/models/product-category.model';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ProductsService {
-    constructor() {}
+    constructor() {
+    }
 
-    getProducts(): Product[] {
+    getProducts(): ProductModel[] {
         return [
-            new Product(1, 'Name 1', 'Description 1', 1, true, Category.C1),
-            new Product(2, 'Name 2', 'Description 2', 2, true, Category.C2),
-            new Product(3, 'Name 3', 'Description 3', 3, true, Category.C1),
+            {id: 1, name: 'Name 1', description: 'Description 1', price: 1, isAvailable: true, category: Category.C1},
+            {id: 2, name: 'Name 2', description: 'Description 2', price: 2, isAvailable: true, category: Category.C2},
+            {id: 3, name: 'Name 3', description: 'Description 3', price: 3, isAvailable: true, category: Category.C1},
         ];
     }
 }

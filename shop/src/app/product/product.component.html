@@ -10,10 +10,10 @@
     </mat-card-content>
     <mat-card-actions>
         <button
-            mat-raised-button
-            color="primary"
             (click)="onBuy(product.id)"
             [disabled]="!product.isAvailable"
+            color="primary"
+            mat-raised-button
         >
             Buy
         </button>

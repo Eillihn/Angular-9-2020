@@ -18,7 +18,9 @@ export class FirstComponent implements OnInit {
     isAvailable: boolean = true;
     size: string[] = ['S', 'M', 'L'];
 
-    constructor() {}
+    constructor() {
+    }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+    }
 }

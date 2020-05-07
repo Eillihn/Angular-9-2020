@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from './product.module';
-import { CartService } from './../cart/cart.service';
+import { ProductModel } from 'src/app/core/models/product.model';
+import { CartService } from 'src/app/core/services/cart.service';
 
 @Component({
     selector: 'app-product',
@@ -8,11 +8,13 @@ import { CartService } from './../cart/cart.service';
     styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-    @Input() product: Product;
+    @Input() product: ProductModel;
 
-    constructor(public cartService: CartService) {}
+    constructor(public cartService: CartService) {
+    }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+    }
 
     onBuy(id: number) {
         this.product.isAvailable = false;
