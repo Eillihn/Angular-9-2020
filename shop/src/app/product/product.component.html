@@ -1,0 +1,21 @@
+<mat-card class="product">
+    <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div>Id: {{ product.id }}</div>
+        <div>Price: {{ product.price }}</div>
+        <div>Description: {{ product.description }}</div>
+        <div>Category: {{ product.category }}</div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="onBuy(product.id)"
+            [disabled]="!product.isAvailable"
+        >
+            Buy
+        </button>
+    </mat-card-actions>
+</mat-card>

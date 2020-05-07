@@ -1,0 +1,14 @@
+<div class="container">
+    <mat-toolbar>First Component</mat-toolbar>
+    <div class="text">
+        <div>Name: {{ name }}</div>
+        <div>Description: {{ description }}</div>
+        <div>Price: {{ price }}</div>
+        <div>Category: {{ category }}</div>
+        <div>Is Available: {{ isAvailable }}</div>
+        <ul>
+            Sizes:
+            <li *ngFor="let item of size">{{ item }}</li>
+        </ul>
+    </div>
+</div>
