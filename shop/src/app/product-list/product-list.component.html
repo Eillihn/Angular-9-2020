@@ -1,0 +1,8 @@
+<div class="container">
+    <mat-toolbar>Products</mat-toolbar>
+    <div class="items-container">
+        <div *ngFor="let product of products" class="item">
+            <app-product [product]="product"></app-product>
+        </div>
+    </div>
+</div>
