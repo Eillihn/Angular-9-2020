@@ -1,0 +1,33 @@
+.container {
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.items-container {
+    margin: 40px auto;
+    display: table;
+    width: 100%;
+    text-align: center;
+}
+
+h3 {
+    margin: 20px;
+}
+
+.column-rows {
+    display: table-row;
+}
+
+.column-cell {
+    display: table-cell;
+    padding: 4px 10px;
+    border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.text {
+    margin: 40px;
+}
+
+.highlight {
+    background: #f5f5f5;
+}

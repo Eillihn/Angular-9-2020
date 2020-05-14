@@ -1,0 +1,30 @@
+<div class="container">
+    <mat-toolbar>
+        <mat-icon aria-hidden="false" aria-label="Home">shopping_cart</mat-icon>
+        <span
+            [matBadgeHidden]="!hasProducts()"
+            [matBadge]="getProductsCount()"
+            matBadgeOverlap="false"
+            >My Cart</span
+        >
+    </mat-toolbar>
+    <div *ngIf="hasProducts(); else emptyCart" class="items-container">
+        <div class="column-rows">
+            <h3 *ngFor="let column of displayedColumns" class="column-cell">
+                {{ column }}
+            </h3>
+        </div>
+        <app-cart-item
+            [order]="order"
+            *ngFor="let order of orders"
+            class="column-rows"
+            appHighlight
+        ></app-cart-item>
+        <div class="column-rows">
+            <h3>Total: {{ getTotal() }}</h3>
+        </div>
+    </div>
+    <ng-template #emptyCart>
+        <p class="text">Cart is empty!</p>
+    </ng-template>
+</div>

@@ -1,21 +1,23 @@
 <mat-card class="product">
     <mat-card-header>
+        <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
         <mat-card-title>{{ product.name }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <div>Id: {{ product.id }}</div>
         <div>Price: {{ product.price }}</div>
-        <div>Description: {{ product.description }}</div>
-        <div>Category: {{ product.category }}</div>
+        <div>{{ product.description }}</div>
     </mat-card-content>
     <mat-card-actions>
         <button
-            (click)="onBuy(product.id)"
-            [disabled]="!product.isAvailable"
+            (click)="onBuyProduct()"
+            [disabled]="!product.isAvailable()"
             color="primary"
             mat-raised-button
         >
             Buy
         </button>
+        <span class="count" [ngClass]="{ last: product.availableCount === 1 }"
+            >{{ product.availableCount }} left</span
+        >
     </mat-card-actions>
 </mat-card>
