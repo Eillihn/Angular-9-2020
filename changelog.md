@@ -19,12 +19,12 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - App was divided in AppModule, CartModule, ProductsModule, OrdersModule, SharedModule;
-- Input-Output communication between ProductListComponent/ProductComponent, CartLictComponent/CartItemComponent was implemented;
+- Input-Output communication between ProductListComponent/ProductItemComponent, CartLictComponent/CartItemComponent was implemented;
 - CartListComponent shows total sum and count of products in cart;
 - CartItemComponent can change product count and remove it from cart;
-- OnPush strategy was implemented for representation models: CartItemComponent & ProductComponent (works with ProductCommunicatorService);
+- OnPush strategy was implemented for representation models: CartItemComponent & ProductItemComponent (works with ProductCommunicatorService);
 - OnInit, OnDestroy hooks methods were used;
-- click DOM event was used in ProductComponent for Buy button;
+- click DOM event was used in ProductItemComponent for Buy button;
 - appTitle template reference was added to AppComponent to show app title from class;
 - HighlightDirective used @HostBinding, @HostListener decorators to highlight cart item on hover;
-- ngClass directive is used in ProductComponent to highlight when there is 1 available product left.
+- ngClass directive is used in ProductItemComponent to highlight when there is 1 available product left.

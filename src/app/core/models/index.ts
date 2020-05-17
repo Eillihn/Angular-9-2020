@@ -1,5 +1,3 @@
-import { ProductModel } from './product.model';
-import { ProductOrderModel } from './product-order.model';
-import { Category } from './product-category.model';
-
-export { ProductModel, ProductOrderModel, Category };
+export * from './product.model';
+export * from './product-order.model';
+export * from './product-category.model';

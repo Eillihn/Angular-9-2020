@@ -22,7 +22,7 @@ export class CartItemComponent implements OnInit, OnDestroy {
     private sub: Subscription;
 
     constructor(
-        public cartServide: CartService,
+        public cartService: CartService,
         public communicator: ProductCommunicatorService,
         public cd: ChangeDetectorRef
     ) {}
@@ -40,13 +40,13 @@ export class CartItemComponent implements OnInit, OnDestroy {
     }
 
     onClearProduct(): void {
-        this.cartServide.clearProducts(this.order);
+        this.cartService.clearProducts(this.order);
     }
 
     onAddProduct(): void {
-        this.cartServide.addProduct(this.order);
+        this.cartService.addProduct(this.order);
     }
     onRemoveProduct(): void {
-        this.cartServide.removeProduct(this.order);
+        this.cartService.removeProduct(this.order);
     }
 }

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductListComponent } from './product-list.component';
-import { ProductComponent } from './../product.component';
+import { ProductItemComponent } from 'src/app/product/product-item/product-item.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('ProductListComponent', () => {
@@ -10,7 +10,7 @@ describe('ProductListComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ProductListComponent, ProductComponent],
+            declarations: [ProductListComponent, ProductItemComponent],
             imports: [SharedModule],
         }).compileComponents();
     }));

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 
 import { ProductOrderModel } from 'src/app/core/models';
-import { CartService, ProductCommunicatorService } from 'src/app/core/services';
+import { CartService } from 'src/app/core/services';
 
 @Component({
     selector: 'app-cart-list',
@@ -20,7 +19,6 @@ export class CartListComponent implements OnInit {
         'Actions',
     ];
     orders: ProductOrderModel[];
-    private sub: Subscription;
 
     constructor(public cartService: CartService) {}
 

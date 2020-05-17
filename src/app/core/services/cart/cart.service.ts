@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProductOrderModel, ProductModel } from 'src/app/core/models';
-import { ProductCommunicatorService } from './../product-communicator/product-communicator.service';
+import { ProductCommunicatorService } from 'src/app/core/services/product-communicator/product-communicator.service';
 
 @Injectable({
     providedIn: 'root',
@@ -15,12 +15,14 @@ export class CartService {
     }
 
     addOrder(product: ProductModel): void {
-        const order = this.orders.find((o) => o.product.id === product.id);
+        let order = this.orders.find((o) => o.product.id === product.id);
         if (order) {
             order.count++;
         } else {
-            this.orders.push(new ProductOrderModel(product, 1));
+            order = new ProductOrderModel(product, 1);
+            this.orders.push(order);
         }
+        order.product.availableCount--;
         this.communicator.publishData(product);
     }
 

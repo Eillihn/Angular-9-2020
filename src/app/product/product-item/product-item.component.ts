@@ -14,15 +14,13 @@ import { ProductCommunicatorService } from 'src/app/core/services';
 
 @Component({
     selector: 'app-product',
-    templateUrl: './product.component.html',
-    styleUrls: ['./product.component.scss'],
+    templateUrl: './product-item.component.html',
+    styleUrls: ['./product-item.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductComponent implements OnInit, OnDestroy {
+export class ProductItemComponent implements OnInit, OnDestroy {
     @Input() product: ProductModel;
-    @Output() buyProduct: EventEmitter<ProductModel> = new EventEmitter<
-        ProductModel
-    >();
+    @Output() buyProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
     private sub: Subscription;
 
     constructor(
@@ -45,7 +43,5 @@ export class ProductComponent implements OnInit, OnDestroy {
     onBuyProduct() {
         this.buyProduct.emit(this.product);
         console.log('Buy ' + this.product.id);
-        this.product.availableCount--;
-        this.communicator.publishData(this.product);
     }
 }
