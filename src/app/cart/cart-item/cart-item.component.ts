@@ -9,7 +9,7 @@ import {
 import { Subscription } from 'rxjs';
 
 import { CartService, ProductCommunicatorService } from 'src/app/core/services';
-import { ProductOrderModel } from 'src/app/core/models';
+import { CartProductModel } from 'src/app/core/models';
 
 @Component({
     selector: 'app-cart-item',
@@ -18,7 +18,7 @@ import { ProductOrderModel } from 'src/app/core/models';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartItemComponent implements OnInit, OnDestroy {
-    @Input() order: ProductOrderModel;
+    @Input() cartProduct: CartProductModel;
     private sub: Subscription;
 
     constructor(
@@ -29,7 +29,7 @@ export class CartItemComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.sub = this.communicator.channel$.subscribe((data) => {
-            if (data.id === this.order.product.id) {
+            if (data.id === this.cartProduct.product.id) {
                 this.cd.detectChanges();
             }
         });
@@ -39,14 +39,14 @@ export class CartItemComponent implements OnInit, OnDestroy {
         this.sub.unsubscribe();
     }
 
-    onClearProduct(): void {
-        this.cartService.clearProducts(this.order);
+    onRemoveProduct(): void {
+        this.cartService.removeProduct(this.cartProduct);
     }
 
-    onAddProduct(): void {
-        this.cartService.addProduct(this.order);
+    onIncreaseQuantity(): void {
+        this.cartService.increaseQuantity(this.cartProduct);
     }
-    onRemoveProduct(): void {
-        this.cartService.removeProduct(this.order);
+    onDecreaseQuantity(): void {
+        this.cartService.decreaseQuantity(this.cartProduct);
     }
 }

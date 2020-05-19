@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CartItemComponent } from './cart-item.component';
-import { ProductModel, Category, ProductOrderModel } from 'src/app/core/models';
+import { ProductModel, Category, CartProductModel } from 'src/app/core/models';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('CartItemComponent', () => {
@@ -19,7 +19,7 @@ describe('CartItemComponent', () => {
         fixture = TestBed.createComponent(CartItemComponent);
         component = fixture.componentInstance;
 
-        component.order = new ProductOrderModel(
+        component.cartProduct = new CartProductModel(
             new ProductModel(1, 'a', 'b', 10, Category.C1, 5),
             1
         );

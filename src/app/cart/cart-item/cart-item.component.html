@@ -1,23 +1,23 @@
-<div class="column-cell">{{ order.product.id }}</div>
-<div class="column-cell">{{ order.product.name }}</div>
-<div class="column-cell">{{ order.product.description }}</div>
-<div class="column-cell">{{ order.product.category }}</div>
-<div class="column-cell">{{ order.product.price }}</div>
+<div class="column-cell">{{ cartProduct.product.id }}</div>
+<div class="column-cell">{{ cartProduct.product.name }}</div>
+<div class="column-cell">{{ cartProduct.product.description }}</div>
+<div class="column-cell">{{ cartProduct.product.category }}</div>
+<div class="column-cell">{{ cartProduct.product.price }}</div>
 <div class="column-cell">
     <button
         mat-mini-fab
         mat-raised-button
-        (click)="onRemoveProduct()"
-        [disabled]="!order.count"
+        (click)="onDecreaseQuantity()"
+        [disabled]="!cartProduct.count"
     >
         <mat-icon aria-hidden="false" aria-label="Home">remove</mat-icon>
     </button>
-    <div class="count">{{ order.count }}</div>
+    <div class="count">{{ cartProduct.count }}</div>
     <button
         mat-mini-fab
         mat-raised-button
-        (click)="onAddProduct()"
-        [disabled]="!order.product.availableCount"
+        (click)="onIncreaseQuantity()"
+        [disabled]="!cartProduct.product.availableCount"
     >
         <mat-icon aria-hidden="false" aria-label="Home">add</mat-icon>
     </button>
@@ -27,7 +27,7 @@
         mat-mini-fab
         color="primary"
         mat-raised-button
-        (click)="onClearProduct()"
+        (click)="onRemoveProduct()"
     >
         <mat-icon aria-hidden="false" aria-label="Home">clear</mat-icon>
     </button>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProductOrderModel } from 'src/app/core/models';
+import { CartProductModel } from 'src/app/core/models';
 import { CartService } from 'src/app/core/services';
 
 @Component({
@@ -18,23 +18,19 @@ export class CartListComponent implements OnInit {
         'Count',
         'Actions',
     ];
-    orders: ProductOrderModel[];
+    cartProducts: CartProductModel[];
 
     constructor(public cartService: CartService) {}
 
     ngOnInit(): void {
-        this.orders = this.cartService.getOrders();
+        this.cartProducts = this.cartService.cartProducts;
     }
 
-    hasProducts(): boolean {
-        return this.cartService.hasProducts();
+    getTotalQuantity(): number {
+        return this.cartService.totalQuantity;
     }
 
-    getProductsCount(): number {
-        return this.cartService.getProductsCount();
-    }
-
-    getTotal(): number {
-        return this.cartService.getTotal();
+    getTotalSum(): number {
+        return this.cartService.totalSum;
     }
 }

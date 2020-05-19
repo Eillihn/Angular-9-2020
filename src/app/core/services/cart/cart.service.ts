@@ -1,65 +1,73 @@
 import { Injectable } from '@angular/core';
-import { ProductOrderModel, ProductModel } from 'src/app/core/models';
+import { CartProductModel, ProductModel } from 'src/app/core/models';
 import { ProductCommunicatorService } from 'src/app/core/services/product-communicator/product-communicator.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CartService {
-    orders: ProductOrderModel[] = [];
+    cartProducts: CartProductModel[] = [];
+    totalQuantity: number = 0;
+    totalSum: number = 0;
 
     constructor(public communicator: ProductCommunicatorService) {}
 
-    getOrders(): ProductOrderModel[] {
-        return this.orders;
-    }
-
-    addOrder(product: ProductModel): void {
-        let order = this.orders.find((o) => o.product.id === product.id);
-        if (order) {
-            order.count++;
+    addProduct(product: ProductModel): void {
+        let cartProduct = this.cartProducts.find(
+            (o) => o.product.id === product.id
+        );
+        if (cartProduct) {
+            cartProduct.count++;
         } else {
-            order = new ProductOrderModel(product, 1);
-            this.orders.push(order);
+            cartProduct = new CartProductModel(product, 1);
+            this.cartProducts.push(cartProduct);
         }
-        order.product.availableCount--;
+        cartProduct.product.availableCount--;
         this.communicator.publishData(product);
+        this.updateCartData();
     }
 
-    addProduct(order: ProductOrderModel): void {
-        if (this.orders.indexOf(order) > -1) {
-            order.count++;
-            order.product.availableCount--;
-        } else {
-            this.orders.push(order);
-        }
-        this.communicator.publishData(order.product);
-    }
-
-    clearProducts(order: ProductOrderModel): void {
-        order.product.availableCount += order.count;
-        this.orders.splice(
-            this.orders.findIndex((o) => o === order),
+    removeProduct(cartProduct: CartProductModel): void {
+        cartProduct.product.availableCount += cartProduct.count;
+        this.cartProducts.splice(
+            this.cartProducts.findIndex((o) => o === cartProduct),
             1
         );
-        this.communicator.publishData(order.product);
+        this.communicator.publishData(cartProduct.product);
+        this.updateCartData();
     }
 
-    removeProduct(order: ProductOrderModel): void {
-        order.count--;
-        order.product.availableCount++;
-        this.communicator.publishData(order.product);
+    increaseQuantity(cartProduct: CartProductModel): void {
+        if (this.cartProducts.indexOf(cartProduct) > -1) {
+            cartProduct.count++;
+            cartProduct.product.availableCount--;
+        } else {
+            this.cartProducts.push(cartProduct);
+        }
+        this.communicator.publishData(cartProduct.product);
+        this.updateCartData();
     }
 
-    hasProducts(): boolean {
-        return this.getProductsCount() > 0;
+    decreaseQuantity(cartProduct: CartProductModel): void {
+        cartProduct.count--;
+        cartProduct.product.availableCount++;
+        this.communicator.publishData(cartProduct.product);
+        this.updateCartData();
     }
 
-    getProductsCount(): number {
-        return this.orders.reduce((prev, cur) => prev + cur.count, 0);
+    removeAllProducts(): void {
+        this.cartProducts = [];
+        this.updateCartData();
     }
 
-    getTotal(): number {
-        return this.orders.reduce((prev, cur) => prev + cur.getTotal(), 0);
+    updateCartData(): void {
+        this.totalQuantity = this.cartProducts.reduce(
+            (prev, cur) => prev + cur.count,
+            0
+        );
+        this.totalSum = this.cartProducts.reduce(
+            (prev, cur) => prev + cur.getTotal(),
+            0
+        );
     }
 }
