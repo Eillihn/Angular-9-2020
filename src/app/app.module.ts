@@ -3,10 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FirstModule } from './first/first.module';
+import { LayoutModule } from './layout/layout.module';
 import { CartModule } from './cart/cart.module';
 import { ProductModule } from './product/product.module';
-import { HeaderModule } from './header/header.module';
 import { OrdersModule } from './orders/orders.module';
 
 @NgModule({
@@ -16,8 +15,7 @@ import { OrdersModule } from './orders/orders.module';
         AppRoutingModule,
         CartModule,
         ProductModule,
-        FirstModule,
-        HeaderModule,
+        LayoutModule,
         OrdersModule,
     ],
     providers: [],

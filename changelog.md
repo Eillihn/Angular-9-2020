@@ -28,3 +28,20 @@ All notable changes to this project will be documented in this file.
 - appTitle template reference was added to AppComponent to show app title from class;
 - HighlightDirective used @HostBinding, @HostListener decorators to highlight cart item on hover;
 - ngClass directive is used in ProductItemComponent to highlight when there is 1 available product left.
+
+# 2020-05-19: Task 3. Services and DI
+- CartService API was updated to: 
+    - cartProducts, 
+    - totalQuantity, 
+    - totalSum, 
+    - addProduct(), 
+    - removeProduct(),
+    - increaseQuantity()/decreaseQuantity(),
+    - removeAllProducts(),
+    - updateCartData();
+- LocalStorageService was added to operate with window.localStorage trough setItem(), getItem(), removeItem();
+- ConfigOptionsService was added to operate with config object like (id, login, email, ...);
+- ConstantsService was added as literal { App: "Shop", Ver: "1.0" };
+- GeneratorService was added to generate random string length n with chars A-Za-z0-9;
+- AboutComponent was added to show that services work;
+- ZoomDirective was added to zoom font size, it uses ElementRef + Renderer2. Usage was added to AboutComponent.

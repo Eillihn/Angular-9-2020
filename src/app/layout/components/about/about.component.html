@@ -1,0 +1,27 @@
+<div class="container">
+    <div>
+        <h3 appZoom="50">Zoom Test Directive Click</h3>
+    </div>
+    <div>
+        <h3 appZoom="50">CartService:</h3>
+        <pre *ngFor="let cartProduct of cartService.cartProducts">{{
+            cartProduct
+        }}</pre>
+    </div>
+    <div>
+        <h3>LocalStorageService:</h3>
+        <pre>{{ localStorageService.getItem("TEST") }}</pre>
+    </div>
+    <div>
+        <h3>ConfigOptionsService:</h3>
+        <pre>{{ configOptionsService.getOptions().login }}</pre>
+    </div>
+    <div>
+        <h3>ConstantsService:</h3>
+        <pre>{{ config.App }}||{{ config.Ver }}</pre>
+    </div>
+    <div>
+        <h3>Generator</h3>
+        <pre>{{ generator }}</pre>
+    </div>
+</div>
