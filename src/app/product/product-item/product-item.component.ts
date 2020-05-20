@@ -29,6 +29,8 @@ export class ProductItemComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit(): void {
+        // я правильно понимаю, что это для перерисовки компонента,
+        // когда количество меняется в корзине?
         this.sub = this.communicator.channel$.subscribe((data) => {
             if (data.id === this.product.id) {
                 this.cd.detectChanges();

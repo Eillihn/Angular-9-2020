@@ -8,16 +8,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 
 @NgModule({
-    declarations: [],
-    imports: [
-        CommonModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatBadgeModule,
-        MatCardModule,
-        MatButtonModule,
-        MatListModule,
-    ],
+    declarations: [], // Если нет деклараций, которые используют импортрированные модули, то массив импортов можно не делать
+    // imports: [
+    //     CommonModule,
+    //     MatToolbarModule,
+    //     MatIconModule,
+    //     MatBadgeModule,
+    //     MatCardModule,
+    //     MatButtonModule,
+    //     MatListModule,
+    // ],
     exports: [
         MatToolbarModule,
         MatIconModule,
