@@ -9,7 +9,7 @@ import {
     GeneratorServiceNFactory,
     GeneratorService10,
 } from 'src/app/core/services';
-import { AppConfig, CartProductModel } from 'src/app/core/models';
+import { AppConfig } from 'src/app/core/models';
 
 @Component({
     selector: 'app-about',
@@ -26,7 +26,6 @@ import { AppConfig, CartProductModel } from 'src/app/core/models';
     ],
 })
 export class AboutComponent implements OnInit {
-    cartProducts: CartProductModel[];
 
     constructor(
         @Optional() public cartService: CartService,

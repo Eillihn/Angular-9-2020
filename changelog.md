@@ -44,4 +44,4 @@ All notable changes to this project will be documented in this file.
 - ConstantsService was added as literal { App: "Shop", Ver: "1.0" };
 - GeneratorService was added to generate random string length n with chars A-Za-z0-9;
 - AboutComponent was added to show that services work;
-- ZoomDirective was added to zoom font size, it uses ElementRef + Renderer2. Usage was added to AboutComponent, Cart Service text line.
+- ZoomDirective was added to zoom font size, it uses ElementRef + Renderer2. Usage was added to AboutComponent.

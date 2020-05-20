@@ -10,7 +10,8 @@ export class CartService {
     totalQuantity: number = 0;
     totalSum: number = 0;
 
-    constructor(public communicator: ProductCommunicatorService) {}
+    constructor(public communicator: ProductCommunicatorService) {
+    }
 
     addProduct(product: ProductModel): void {
         let cartProduct = this.cartProducts.find(
@@ -38,12 +39,8 @@ export class CartService {
     }
 
     increaseQuantity(cartProduct: CartProductModel): void {
-        if (this.cartProducts.indexOf(cartProduct) > -1) {
-            cartProduct.count++;
-            cartProduct.product.availableCount--;
-        } else {
-            this.cartProducts.push(cartProduct);
-        }
+        cartProduct.count++;
+        cartProduct.product.availableCount--;
         this.communicator.publishData(cartProduct.product);
         this.updateCartData();
     }
