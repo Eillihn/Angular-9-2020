@@ -45,3 +45,8 @@ All notable changes to this project will be documented in this file.
 - GeneratorService was added to generate random string length n with chars A-Za-z0-9;
 - AboutComponent was added to show that services work;
 - ZoomDirective was added to zoom font size, it uses ElementRef + Renderer2. Usage was added to AboutComponent.
+
+# 2020-05-24: Task 4. Pipes
+- uppercase, titlecase build-in pipes were added;
+- ProductService#getProducts() was changed to return promise, async pipe was added to ProductListComponent;
+- OrderByPipe was created to sort cart products by price, quantity and name.

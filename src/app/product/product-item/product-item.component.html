@@ -1,6 +1,8 @@
 <mat-card class="product">
     <mat-card-header>
-        <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+        <mat-card-subtitle>{{
+            product.category | uppercase
+        }}</mat-card-subtitle>
         <mat-card-title>{{ product.name }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
@@ -16,8 +18,12 @@
         >
             Buy
         </button>
-        <span class="count"
-              [ngClass]="{ last: product.availableCount === 1, 'not-available': !product.availableCount }"
+        <span
+            class="count"
+            [ngClass]="{
+                last: product.availableCount === 1,
+                'not-available': !product.availableCount
+            }"
             >{{ product.availableCount }} left</span
         >
     </mat-card-actions>

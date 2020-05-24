@@ -1,5 +1,5 @@
 .items-container {
-    margin: 40px auto;
+    margin: 10px auto;
     display: table;
     width: 100%;
     text-align: center;
@@ -25,4 +25,18 @@ h3 {
 
 .highlight {
     background: #f5f5f5;
+}
+
+.sort {
+    display: flex;
+    margin: 40px 20px 10px 20px;
+}
+
+.sort-arrow {
+    display: inline-block;
+    margin-left: 20px;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    min-width: auto;
 }

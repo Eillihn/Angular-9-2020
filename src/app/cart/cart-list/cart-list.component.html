@@ -8,6 +8,27 @@
             >My Cart</span
         >
     </mat-toolbar>
+    <div class="sort" *ngIf="cartProducts.length">
+        <mat-form-field>
+            <mat-label>Order By</mat-label>
+            <mat-select [formControl]="sortForm">
+                <mat-option
+                    *ngFor="let sortName of sortList"
+                    [value]="sortName"
+                    >{{ sortName | titlecase }}</mat-option
+                >
+            </mat-select>
+        </mat-form-field>
+        <button
+            mat-stroked-button
+            class="sort-arrow"
+            (click)="sortDirection = !sortDirection"
+            *ngIf="sortForm.value"
+        >
+            <mat-icon *ngIf="sortDirection">arrow_upward </mat-icon>
+            <mat-icon *ngIf="!sortDirection">arrow_downward </mat-icon>
+        </button>
+    </div>
     <div *ngIf="cartProducts.length; else emptyCart" class="items-container">
         <div class="column-rows">
             <h3 *ngFor="let column of displayedColumns" class="column-cell">
@@ -16,7 +37,10 @@
         </div>
         <app-cart-item
             [cartProduct]="cartProduct"
-            *ngFor="let cartProduct of cartProducts"
+            *ngFor="
+                let cartProduct of cartProducts
+                    | orderBy: sortForm.value:sortDirection
+            "
             class="column-rows"
             appHighlight
         ></app-cart-item>

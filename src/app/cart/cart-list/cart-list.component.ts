@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 import { CartProductModel } from 'src/app/core/models';
 import { CartService } from 'src/app/core/services';
@@ -19,6 +20,9 @@ export class CartListComponent implements OnInit {
         'Actions',
     ];
     cartProducts: CartProductModel[];
+    sortForm = new FormControl();
+    sortList: string[] = ['price', 'quantity', 'name'];
+    sortDirection: boolean = false;
 
     constructor(public cartService: CartService) {}
 
