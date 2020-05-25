@@ -15,8 +15,8 @@ export class ProductsService {
     constructor() {}
 
     getProducts(): Promise<ProductModel[]> {
-        return <Promise<ProductModel[]>>new Promise((resolve) => {
+        return (new Promise((resolve) => {
             resolve(this.data);
-        }).catch((error) => error);
+        }).catch((error) => error)) as Promise<ProductModel[]>;
     }
 }

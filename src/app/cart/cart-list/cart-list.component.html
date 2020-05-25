@@ -45,7 +45,7 @@
             appHighlight
         ></app-cart-item>
         <div class="column-rows">
-            <h3>Total: {{ getTotalSum() }}</h3>
+            <h3>Total: {{ getTotalSum() | currency }}</h3>
         </div>
     </div>
     <ng-template #emptyCart>

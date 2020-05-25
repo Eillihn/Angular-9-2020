@@ -47,6 +47,6 @@ All notable changes to this project will be documented in this file.
 - ZoomDirective was added to zoom font size, it uses ElementRef + Renderer2. Usage was added to AboutComponent.
 
 # 2020-05-24: Task 4. Pipes
-- uppercase, titlecase build-in pipes were added;
+- uppercase, titlecase, currency build-in pipes were added;
 - ProductService#getProducts() was changed to return promise, async pipe was added to ProductListComponent;
 - OrderByPipe was created to sort cart products by price, quantity and name.
