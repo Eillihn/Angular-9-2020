@@ -21,3 +21,7 @@ import { OrderByPipe } from './pipes';
     ],
 })
 export class SharedModule {}
+// В папке shared удобно организовать подпапку directives и туда переместить директивы.
+// У вас дальше появится еще pipe
+
+
