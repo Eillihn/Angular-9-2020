@@ -1,7 +1,7 @@
 <div class="container">
     <mat-toolbar>Products</mat-toolbar>
     <div class="items-container">
-        <div *ngFor="let product of products" class="item">
+        <div *ngFor="let product of products | async" class="item">
             <app-product
                 [product]="product"
                 (buyProduct)="onBuyProduct($event)"

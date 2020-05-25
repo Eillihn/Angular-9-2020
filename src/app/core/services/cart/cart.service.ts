@@ -10,8 +10,7 @@ export class CartService {
     totalQuantity: number = 0;
     totalSum: number = 0;
 
-    constructor(public communicator: ProductCommunicatorService) {
-    }
+    constructor(public communicator: ProductCommunicatorService) {}
 
     addProduct(product: ProductModel): void {
         let cartProduct = this.cartProducts.find(
