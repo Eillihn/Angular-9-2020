@@ -27,6 +27,9 @@ export class CartItemComponent implements OnInit, OnDestroy {
         public cd: ChangeDetectorRef
     ) {}
 
+    // Поскольку тут такая реализация, что избавится вовсе от зависимостей не получится, то ок.
+    // Но обічно сюда внедрять cartService не нужно, так как этот компонент не владелец данных
+    // и желательно данные тут не менять, а передавать аутпут родителю, пусть он меняет.
     ngOnInit(): void {
         this.sub = this.communicator.channel$.subscribe((data) => {
             if (data.id === this.cartProduct.product.id) {

@@ -8,10 +8,12 @@ function getRandomChar() {
     return Math.random() < 0.5 ? ch : ch.toLowerCase();
 }
 
+// Хотелось бы, чтобы это был класс
 function GeneratorService(n: number): string {
     return Array.from({ length: n }, getRandomChar).join('');
 }
 
+// А тут этот класс использовался бы
 function GeneratorServiceNFactory(n: number) {
     return GeneratorService.bind(null, n);
 }
