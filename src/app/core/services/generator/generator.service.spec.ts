@@ -2,22 +2,23 @@ import { TestBed } from '@angular/core/testing';
 
 import {
     GeneratorServiceNFactory,
-    GeneratorService10,
+    GeneratorService,
+    GENERATOR_SERVICE_TOKEN,
 } from './generator.service';
 
 describe('GeneratorService', () => {
-    let service: string;
+    let service: GeneratorService;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
                 {
-                    provide: GeneratorService10,
-                    useFactory: GeneratorServiceNFactory(10),
+                    provide: GENERATOR_SERVICE_TOKEN,
+                    useFactory: GeneratorServiceNFactory.bind(null, 10),
                 },
             ],
         });
-        service = TestBed.inject(GeneratorService10);
+        service = TestBed.inject(GENERATOR_SERVICE_TOKEN);
     });
 
     it('should be created', () => {

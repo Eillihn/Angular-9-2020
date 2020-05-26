@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HighlightDirective } from './highlight/highlight.directive';
-import { ZoomDirective } from './zoom/zoom.directive';
+import { HighlightDirective } from './directives/highlight/highlight.directive';
+import { ZoomDirective } from './directives/zoom/zoom.directive';
 import { MaterialModule } from './material.module';
 import { OrderByPipe } from './pipes';
 

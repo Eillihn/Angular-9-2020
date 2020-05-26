@@ -7,7 +7,8 @@ import {
     ConstantService,
     APP_CONFIG,
     GeneratorServiceNFactory,
-    GeneratorService10,
+    GeneratorService,
+    GENERATOR_SERVICE_TOKEN,
 } from 'src/app/core/services';
 import { AppConfig } from 'src/app/core/models';
 
@@ -20,19 +21,18 @@ import { AppConfig } from 'src/app/core/models';
         { provide: ConfigOptionsService, useClass: ConfigOptionsService },
         { provide: APP_CONFIG, useValue: ConstantService },
         {
-            provide: GeneratorService10,
-            useFactory: GeneratorServiceNFactory(10),
+            provide: GENERATOR_SERVICE_TOKEN,
+            useFactory: GeneratorServiceNFactory.bind(null, 10),
         },
     ],
 })
 export class AboutComponent implements OnInit {
-
     constructor(
         @Optional() public cartService: CartService,
         @Optional() public localStorageService: LocalStorageService,
         @Optional() public configOptionsService: ConfigOptionsService,
         @Inject(APP_CONFIG) @Optional() public config: AppConfig,
-        @Inject(GeneratorService10) public generator: any[]
+        @Inject(GENERATOR_SERVICE_TOKEN) public generator: GeneratorService
     ) {}
 
     ngOnInit(): void {
