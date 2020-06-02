@@ -1,0 +1,47 @@
+<mat-card class="product">
+    <mat-card-header>
+        <mat-card-subtitle>
+            {{ product.category | uppercase }}</mat-card-subtitle
+        >
+        <mat-card-title
+            ><a mat-button color="primary" (click)="onGoToProduct()">{{
+                product.name
+            }}</a></mat-card-title
+        >
+    </mat-card-header>
+    <mat-card-content>
+        <div>Price: {{ product.price | currency }}</div>
+        <div>{{ product.description }}</div>
+        <div>Available Count: {{ product.availableCount }}</div>
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="editable; else buyBlock">
+        <button (click)="onEditProduct()" color="primary" mat-raised-button>
+            Edit
+        </button>
+        <button (click)="onDeleteProduct()" color="accent" mat-raised-button>
+            Delete
+        </button>
+    </mat-card-actions>
+
+    <ng-template #buyBlock>
+        <mat-card-actions>
+            <button
+                (click)="onBuyProduct()"
+                [disabled]="product.availableCount === 0"
+                color="primary"
+                mat-raised-button
+            >
+                Buy
+            </button>
+            <span
+                class="count"
+                [ngClass]="{
+                    last: product.availableCount === 1,
+                    'not-available': !product.availableCount
+                }"
+                >{{ product.availableCount }} left</span
+            >
+        </mat-card-actions>
+    </ng-template>
+</mat-card>

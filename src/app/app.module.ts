@@ -7,16 +7,19 @@ import { LayoutModule } from './layout/layout.module';
 import { CartModule } from './cart/cart.module';
 import { ProductModule } from './product/product.module';
 import { OrdersModule } from './orders/orders.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
     declarations: [AppComponent],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         CartModule,
         ProductModule,
-        LayoutModule,
         OrdersModule,
+        LayoutModule,
+        AdminModule,
+
+        AppRoutingModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

@@ -50,3 +50,20 @@ All notable changes to this project will be documented in this file.
 - uppercase, titlecase, currency build-in pipes were added;
 - ProductService#getProducts() was changed to return promise, async pipe was added to ProductListComponent;
 - OrderByPipe was created to sort cart products by price, quantity and name.
+
+# 2020-06-02: Task 5. Routing
+- Routing was added:
+    - ProductRoutingModule:
+        /products-list
+        /product/:productID
+    - CartModule:
+        /cart
+    - OrdersRoutingModule:
+        /order
+    - AdminRoutingModule:
+        /admin + canActivateGuard
+        /admin/products
+        /admin/product/add
+        /admin/product/edit:productID + resolve guard
+        /admin/orders
+- cart items are saved/restored to/from localstorage.

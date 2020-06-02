@@ -1,0 +1,13 @@
+<div class="container">
+    <button
+        *ngIf="cartService.hasCartProducts(); else cartEmpty"
+        mat-raised-button
+        color="primary"
+        (click)="onMakeOrder()"
+    >
+        Make Order
+    </button>
+    <ng-template #cartEmpty>
+        Cart is Empty!
+    </ng-template>
+</div>

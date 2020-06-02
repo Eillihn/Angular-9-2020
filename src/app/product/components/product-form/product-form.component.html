@@ -1,0 +1,117 @@
+<mat-toolbar>
+    <div>Product Form</div>
+</mat-toolbar>
+<form (ngSubmit)="onSave()" id="product-form" #form="ngForm">
+    <div class="form-row">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input
+                matInput
+                type="text"
+                [(ngModel)]="product.name"
+                name="name"
+                required
+            />
+            <button
+                mat-button
+                *ngIf="product.name"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+                (click)="product.name = ''"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <input
+                matInput
+                type="text"
+                [(ngModel)]="product.description"
+                name="description"
+                required
+            />
+            <button
+                mat-button
+                *ngIf="product.description"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+                (click)="product.description = ''"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field>
+            <mat-label>Price</mat-label>
+            <input
+                matInput
+                type="number"
+                min="0"
+                [(ngModel)]="product.price"
+                name="price"
+                required
+            />
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select
+                [(ngModel)]="product.category"
+                name="category"
+                [compareWith]="compareCategories"
+                required
+            >
+                <mat-option
+                    *ngFor="let category of Category | keyvalue"
+                    [value]="category.key"
+                >
+                    {{ category.value }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <mat-form-field>
+            <mat-label>Available Count</mat-label>
+            <input
+                matInput
+                type="number"
+                min="0"
+                [(ngModel)]="product.availableCount"
+                name="availableCount"
+                required
+            />
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+        <button
+            mat-raised-button
+            color="warn"
+            type="submit"
+            form="product-form"
+            [disabled]="form.invalid"
+        >
+            Save
+        </button>
+        <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="onGoBack()"
+        >
+            Back
+        </button>
+    </div>
+</form>

@@ -1,13 +1,4 @@
 <div class="container">
-    <mat-toolbar>
-        <mat-icon aria-hidden="false" aria-label="Home">shopping_cart</mat-icon>
-        <span
-            [matBadgeHidden]="!cartProducts.length"
-            [matBadge]="getTotalQuantity()"
-            matBadgeOverlap="false"
-            >My Cart</span
-        >
-    </mat-toolbar>
     <div class="sort" *ngIf="cartProducts.length">
         <mat-form-field>
             <mat-label>Order By</mat-label>

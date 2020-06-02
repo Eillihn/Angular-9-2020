@@ -1,0 +1,22 @@
+<div class="product-details">
+    <div>
+        <h3>Name:</h3>
+        <p>{{ product.name }}</p>
+    </div>
+    <div>
+        <h3>Category:</h3>
+        <p>{{ product.category | uppercase }}</p>
+    </div>
+    <div>
+        <h3>Price:</h3>
+        <p>{{ product.price | currency }}</p>
+    </div>
+    <div>
+        <h3>Description:</h3>
+        <p>{{ product.description }}</p>
+    </div>
+    <div>
+        <h3>Available Count:</h3>
+        <p>{{ product.availableCount }}</p>
+    </div>
+</div>

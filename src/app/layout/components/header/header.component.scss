@@ -2,3 +2,16 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+
+.nav {
+    margin: 0 20px;
+}
+
+.active {
+    color: #fff;
+    background-color: rgba($color: #ffffff, $alpha: 0.1);
+}
+
+h1 {
+    display: inline-block;
+}

@@ -1,6 +1,40 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row class="container">
-        <mat-icon aria-hidden="false" aria-label="Home">store</mat-icon>
-        <span>Shop</span>
+        <a mat-button routerLink="/home"
+            ><mat-icon aria-hidden="false" aria-label="Home">store</mat-icon>
+            <h1>Shop</h1>
+        </a>
+        <nav>
+            <ul class="nav">
+                <li>
+                    <a
+                        mat-button
+                        routerLink="/products-list"
+                        routerLinkActive="active"
+                        >Products</a
+                    >
+                </li>
+                <li>
+                    <a mat-button routerLink="/cart" routerLinkActive="active"
+                        >Cart</a
+                    >
+                </li>
+                <li>
+                    <a mat-button routerLink="/order" routerLinkActive="active"
+                        >Order</a
+                    >
+                </li>
+                <li>
+                    <a mat-button routerLink="/admin" routerLinkActive="active"
+                        >Admin</a
+                    >
+                </li>
+                <li>
+                    <a mat-button routerLink="/login" routerLinkActive="active"
+                        >Login</a
+                    >
+                </li>
+            </ul>
+        </nav>
     </mat-toolbar-row>
 </mat-toolbar>

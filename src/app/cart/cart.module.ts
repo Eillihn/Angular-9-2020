@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from 'src/app/shared/shared.module';
-import { CartListComponent } from './cart-list/cart-list.component';
-import { CartItemComponent } from './cart-item/cart-item.component';
+import { CartListComponent, CartItemComponent } from '.';
+import { CartRoutingModule } from './cart-routing.module';
+import { LocalStorageService } from 'src/app/core';
 
 @NgModule({
     declarations: [CartListComponent, CartItemComponent],
     imports: [SharedModule, ReactiveFormsModule],
-    exports: [CartListComponent],
+    exports: [CartListComponent, CartRoutingModule],
+    providers: [
+        { provide: LocalStorageService, useClass: LocalStorageService },
+    ],
 })
 export class CartModule {}

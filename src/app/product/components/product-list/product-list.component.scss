@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+}
+
+.items-container {
+    display: flex;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    &.editable {
+        display: flex;
+        margin: 20px 0;
+    }
+}
+
+.item {
+    flex: 0 1 33%;
+}
