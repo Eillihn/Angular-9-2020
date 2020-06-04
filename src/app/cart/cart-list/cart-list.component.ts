@@ -24,7 +24,8 @@ export class CartListComponent implements OnInit {
     sortList: string[] = ['price', 'quantity', 'name'];
     sortDirection: boolean = false;
 
-    constructor(public cartService: CartService) {}
+    constructor(public cartService: CartService) {
+    }
 
     ngOnInit(): void {
         this.cartProducts = this.cartService.cartProducts;

@@ -1,11 +1,19 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FirstComponent, HeaderComponent, AboutComponent } from './components';
+import { AboutComponent, FirstComponent, HeaderComponent, LoginComponent, PathNotFoundComponent, } from '.';
 
 @NgModule({
-    declarations: [FirstComponent, HeaderComponent, AboutComponent],
-    imports: [SharedModule],
-    exports: [FirstComponent, HeaderComponent, AboutComponent],
+    declarations: [
+        FirstComponent,
+        HeaderComponent,
+        AboutComponent,
+        LoginComponent,
+        PathNotFoundComponent,
+    ],
+    imports: [SharedModule, RouterModule],
+    exports: [FirstComponent, HeaderComponent, AboutComponent, PathNotFoundComponent],
 })
-export class LayoutModule {}
+export class LayoutModule {
+}

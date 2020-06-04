@@ -8,7 +8,7 @@ describe('ConstantService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [{ provide: APP_CONFIG, useValue: ConstantService }],
+            providers: [{provide: APP_CONFIG, useValue: ConstantService}],
         });
         service = TestBed.inject(APP_CONFIG);
     });

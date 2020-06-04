@@ -1,11 +1,4 @@
-import {
-    Component,
-    OnInit,
-    OnDestroy,
-    Input,
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CartService, ProductCommunicatorService } from 'src/app/core/services';
@@ -25,7 +18,8 @@ export class CartItemComponent implements OnInit, OnDestroy {
         public cartService: CartService,
         public communicator: ProductCommunicatorService,
         public cd: ChangeDetectorRef
-    ) {}
+    ) {
+    }
 
     ngOnInit(): void {
         this.sub = this.communicator.channel$.subscribe((data) => {
@@ -46,6 +40,7 @@ export class CartItemComponent implements OnInit, OnDestroy {
     onIncreaseQuantity(): void {
         this.cartService.increaseQuantity(this.cartProduct);
     }
+
     onDecreaseQuantity(): void {
         this.cartService.decreaseQuantity(this.cartProduct);
     }

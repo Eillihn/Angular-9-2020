@@ -3,10 +3,10 @@
         <h3 appZoom="50">Zoom Test Directive Click</h3>
     </div>
     <div>
-        <h3 appZoom="50">CartService:</h3>
-        <pre *ngFor="let cartProduct of cartService.cartProducts">{{
-            cartProduct
-        }}</pre>
+        <h3>CartService:</h3>
+        <pre *ngFor="let cartProduct of cartService.cartProducts"
+        >{{ cartProduct.count }} - {{ cartProduct.product.name }}</pre
+        >
     </div>
     <div>
         <h3>LocalStorageService:</h3>

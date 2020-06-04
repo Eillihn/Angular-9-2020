@@ -1,0 +1,12 @@
+<div [ngClass]="{ editable: editable }" class="items-container">
+    <div *ngFor="let product of products | async" class="item">
+        <app-product
+            (buyProduct)="onBuyProduct($event)"
+            (deleteProduct)="onDeleteProduct($event)"
+            (editProduct)="onEditProduct($event)"
+            (goToProduct)="onGoToProduct($event)"
+            [editable]="editable"
+            [product]="product"
+        ></app-product>
+    </div>
+</div>

@@ -1,10 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import {
-    GeneratorServiceNFactory,
-    GeneratorService,
-    GENERATOR_SERVICE_TOKEN,
-} from './generator.service';
+import { GENERATOR_SERVICE_TOKEN, GeneratorService, GeneratorServiceNFactory, } from './generator.service';
 
 describe('GeneratorService', () => {
     let service: GeneratorService;

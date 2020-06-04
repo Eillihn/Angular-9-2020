@@ -6,7 +6,8 @@ import { ZoomDirective } from './zoom.directive';
 @Component({
     template: `<div appZoom></div>`,
 })
-class TestComponent {}
+class TestComponent {
+}
 
 describe('ZoomDirective', () => {
     let component: TestComponent;
