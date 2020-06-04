@@ -1,10 +1,4 @@
-import {
-    Directive,
-    ElementRef,
-    Renderer2,
-    HostListener,
-    Input,
-} from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer2, } from '@angular/core';
 
 @Directive({
     selector: '[appZoom]',
@@ -12,7 +6,8 @@ import {
 export class ZoomDirective {
     @Input('appZoom') fontSize: number;
 
-    constructor(private el: ElementRef, private render: Renderer2) {}
+    constructor(private el: ElementRef, private render: Renderer2) {
+    }
 
     @HostListener('click') onClick() {
         const hasFontSize = this.el.nativeElement.style.fontSize;

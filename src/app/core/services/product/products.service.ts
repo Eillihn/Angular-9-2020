@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { ProductModel } from 'src/app/core/models/product.model';
 import { Category } from 'src/app/core/models/product-category.model';
@@ -39,7 +39,8 @@ const dataObservable: Observable<ProductModel[]> = of(data);
 export class ProductsService {
     products$: Observable<ProductModel[]> = dataObservable;
 
-    constructor() {}
+    constructor() {
+    }
 
     getProducts(): Observable<ProductModel[]> {
         return this.products$;

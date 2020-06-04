@@ -8,7 +8,7 @@ describe('LocalStorageService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
-                { provide: LocalStorageService, useClass: LocalStorageService },
+                {provide: LocalStorageService, useClass: LocalStorageService},
             ],
         });
         service = TestBed.inject(LocalStorageService);

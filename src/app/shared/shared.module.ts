@@ -20,4 +20,5 @@ import { OrderByPipe } from './pipes';
         BrowserAnimationsModule,
     ],
 })
-export class SharedModule {}
+export class SharedModule {
+}

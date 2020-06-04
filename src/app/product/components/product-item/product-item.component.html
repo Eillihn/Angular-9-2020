@@ -4,8 +4,8 @@
             {{ product.category | uppercase }}</mat-card-subtitle
         >
         <mat-card-title
-            ><a mat-button color="primary" (click)="onGoToProduct()">{{
-                product.name
+        ><a (click)="onGoToProduct()" color="primary" mat-button>{{
+            product.name
             }}</a></mat-card-title
         >
     </mat-card-header>
@@ -35,12 +35,12 @@
                 Buy
             </button>
             <span
-                class="count"
                 [ngClass]="{
                     last: product.availableCount === 1,
                     'not-available': !product.availableCount
                 }"
-                >{{ product.availableCount }} left</span
+                class="count"
+            >{{ product.availableCount }} left</span
             >
         </mat-card-actions>
     </ng-template>

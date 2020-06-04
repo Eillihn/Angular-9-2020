@@ -10,7 +10,8 @@ import { OrderModel } from 'src/app/core/models';
 export class OrderListComponent implements OnInit {
     orders: OrderModel[];
 
-    constructor(public orderService: OrderService) {}
+    constructor(public orderService: OrderService) {
+    }
 
     ngOnInit(): void {
         this.orders = this.orderService.orders;

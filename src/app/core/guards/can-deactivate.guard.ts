@@ -3,7 +3,7 @@ import { CanDeactivate, UrlTree } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
-import { CanComponentDeactivate } from './../interfaces/can-component-deactivate.interface';
+import { CanComponentDeactivate } from 'src/app/core/interfaces';
 
 @Injectable({
     providedIn: 'root',

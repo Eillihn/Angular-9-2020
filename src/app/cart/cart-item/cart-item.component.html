@@ -5,29 +5,29 @@
 <div class="column-cell">{{ cartProduct.product.price | currency }}</div>
 <div class="column-cell">
     <button
-        mat-mini-fab
-        mat-raised-button
         (click)="onDecreaseQuantity()"
         [disabled]="!cartProduct.count"
+        mat-mini-fab
+        mat-raised-button
     >
         <mat-icon aria-hidden="false" aria-label="Home">remove</mat-icon>
     </button>
     <div class="count">{{ cartProduct.count }}</div>
     <button
-        mat-mini-fab
-        mat-raised-button
         (click)="onIncreaseQuantity()"
         [disabled]="!cartProduct.product.availableCount"
+        mat-mini-fab
+        mat-raised-button
     >
         <mat-icon aria-hidden="false" aria-label="Home">add</mat-icon>
     </button>
 </div>
 <div class="column-cell">
     <button
-        mat-mini-fab
-        color="primary"
-        mat-raised-button
         (click)="onRemoveProduct()"
+        color="primary"
+        mat-mini-fab
+        mat-raised-button
     >
         <mat-icon aria-hidden="false" aria-label="Home">clear</mat-icon>
     </button>

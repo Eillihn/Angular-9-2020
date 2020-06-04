@@ -1,12 +1,12 @@
 import {
-    Component,
-    OnInit,
-    OnDestroy,
-    Input,
-    Output,
-    EventEmitter,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
+    Component,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProductModel } from 'src/app/core/models';
@@ -21,24 +21,17 @@ import { ProductCommunicatorService } from 'src/app/core/services';
 export class ProductItemComponent implements OnInit, OnDestroy {
     @Input() product: ProductModel;
     @Input() editable: boolean;
-    @Output() buyProduct: EventEmitter<ProductModel> = new EventEmitter<
-        ProductModel
-    >();
-    @Output() goToProduct: EventEmitter<ProductModel> = new EventEmitter<
-        ProductModel
-    >();
-    @Output() editProduct: EventEmitter<ProductModel> = new EventEmitter<
-        ProductModel
-    >();
-    @Output() deleteProduct: EventEmitter<ProductModel> = new EventEmitter<
-        ProductModel
-    >();
+    @Output() buyProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
+    @Output() goToProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
+    @Output() editProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
+    @Output() deleteProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
     private sub: Subscription;
 
     constructor(
         public communicator: ProductCommunicatorService,
         private cd: ChangeDetectorRef
-    ) {}
+    ) {
+    }
 
     ngOnInit(): void {
         this.sub = this.communicator.channel$.subscribe((data) => {

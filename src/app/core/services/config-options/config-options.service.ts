@@ -6,10 +6,11 @@ import { ConfigOption } from 'src/app/core/models';
 export class ConfigOptionsService {
     private config: ConfigOption;
 
-    constructor() {}
+    constructor() {
+    }
 
     setOptions(cfg: ConfigOption) {
-        this.config = { ...this.config, ...cfg };
+        this.config = {...this.config, ...cfg};
     }
 
     getOptions(): ConfigOption {

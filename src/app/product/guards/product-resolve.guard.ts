@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { map, catchError, take } from 'rxjs/operators';
+import { catchError, map, take } from 'rxjs/operators';
 
 import { ProductModule } from './../product.module';
-import { ProductsService } from '../../core/services/product/products.service';
+import { ProductsService } from 'src/app/core/services';
 import { ProductModel } from 'src/app/core';
 
 @Injectable({
@@ -14,7 +14,8 @@ export class ProductResolveGuard implements Resolve<ProductModule> {
     constructor(
         private productsService: ProductsService,
         private router: Router
-    ) {}
+    ) {
+    }
 
     resolve(route: ActivatedRouteSnapshot): Observable<ProductModule | null> {
         if (!route.paramMap.has('productID')) {

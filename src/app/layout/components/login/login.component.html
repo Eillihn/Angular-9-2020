@@ -3,16 +3,16 @@
     <p>State: {{ message }}</p>
     <p>
         <button
-            mat-raised-button
-            color="primary"
             (click)="onLogout()"
             *ngIf="authService.isLoggedIn; else loginBtn"
+            color="primary"
+            mat-raised-button
         >
             Logout
         </button>
 
         <ng-template #loginBtn>
-            <button mat-raised-button color="primary" (click)="onLogin()">
+            <button (click)="onLogin()" color="primary" mat-raised-button>
                 Login
             </button>
         </ng-template>

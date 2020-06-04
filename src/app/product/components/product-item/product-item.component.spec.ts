@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductItemComponent } from './product-item.component';
-import { ProductModel, Category } from 'src/app/core/models';
+import { Category, ProductModel } from 'src/app/core/models';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('ProductItemComponent', () => {

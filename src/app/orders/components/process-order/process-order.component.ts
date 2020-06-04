@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService, CartService } from 'src/app/core/services';
+import { CartService, OrderService } from 'src/app/core/services';
 
 @Component({
     selector: 'app-process-order',
@@ -10,9 +10,11 @@ export class ProcessOrderComponent implements OnInit {
     constructor(
         public orderService: OrderService,
         public cartService: CartService
-    ) {}
+    ) {
+    }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+    }
 
     onMakeOrder(): void {
         this.orderService.createOrder(

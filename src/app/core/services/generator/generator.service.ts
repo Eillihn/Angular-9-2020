@@ -10,10 +10,11 @@ class GeneratorService {
 
     constructor(public n: number) {
         this.generatedValue = Array.from(
-            { length: n },
+            {length: n},
             this.getRandomChar.bind(this)
         ).join('');
     }
+
     getRandomChar() {
         const ch = this.CHARS[Math.floor(Math.random() * this.CHARS.length)];
         return Math.random() < 0.5 ? ch : ch.toLowerCase();

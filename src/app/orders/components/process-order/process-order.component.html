@@ -1,9 +1,9 @@
 <div class="container">
     <button
-        *ngIf="cartService.hasCartProducts(); else cartEmpty"
-        mat-raised-button
-        color="primary"
         (click)="onMakeOrder()"
+        *ngIf="cartService.hasCartProducts(); else cartEmpty"
+        color="primary"
+        mat-raised-button
     >
         Make Order
     </button>

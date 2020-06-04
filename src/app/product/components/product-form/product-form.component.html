@@ -1,24 +1,24 @@
 <mat-toolbar>
     <div>Product Form</div>
 </mat-toolbar>
-<form (ngSubmit)="onSave()" id="product-form" #form="ngForm">
+<form #form="ngForm" (ngSubmit)="onSave()" id="product-form">
     <div class="form-row">
         <mat-form-field>
             <mat-label>Name</mat-label>
             <input
-                matInput
-                type="text"
                 [(ngModel)]="product.name"
+                matInput
                 name="name"
                 required
+                type="text"
             />
             <button
-                mat-button
-                *ngIf="product.name"
-                matSuffix
-                mat-icon-button
-                aria-label="Clear"
                 (click)="product.name = ''"
+                *ngIf="product.name"
+                aria-label="Clear"
+                mat-button
+                mat-icon-button
+                matSuffix
             >
                 <mat-icon>close</mat-icon>
             </button>
@@ -29,19 +29,19 @@
         <mat-form-field>
             <mat-label>Description</mat-label>
             <input
-                matInput
-                type="text"
                 [(ngModel)]="product.description"
+                matInput
                 name="description"
                 required
+                type="text"
             />
             <button
-                mat-button
-                *ngIf="product.description"
-                matSuffix
-                mat-icon-button
-                aria-label="Clear"
                 (click)="product.description = ''"
+                *ngIf="product.description"
+                aria-label="Clear"
+                mat-button
+                mat-icon-button
+                matSuffix
             >
                 <mat-icon>close</mat-icon>
             </button>
@@ -52,12 +52,12 @@
         <mat-form-field>
             <mat-label>Price</mat-label>
             <input
-                matInput
-                type="number"
-                min="0"
                 [(ngModel)]="product.price"
+                matInput
+                min="0"
                 name="price"
                 required
+                type="number"
             />
         </mat-form-field>
     </div>
@@ -67,8 +67,8 @@
             <mat-label>Category</mat-label>
             <mat-select
                 [(ngModel)]="product.category"
-                name="category"
                 [compareWith]="compareCategories"
+                name="category"
                 required
             >
                 <mat-option
@@ -85,31 +85,31 @@
         <mat-form-field>
             <mat-label>Available Count</mat-label>
             <input
-                matInput
-                type="number"
-                min="0"
                 [(ngModel)]="product.availableCount"
+                matInput
+                min="0"
                 name="availableCount"
                 required
+                type="number"
             />
         </mat-form-field>
     </div>
 
     <div class="form-row">
         <button
-            mat-raised-button
-            color="warn"
-            type="submit"
-            form="product-form"
             [disabled]="form.invalid"
+            color="warn"
+            form="product-form"
+            mat-raised-button
+            type="submit"
         >
             Save
         </button>
         <button
-            mat-raised-button
-            color="primary"
-            type="button"
             (click)="onGoBack()"
+            color="primary"
+            mat-raised-button
+            type="button"
         >
             Back
         </button>

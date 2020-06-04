@@ -10,4 +10,5 @@ import { AdminRoutingModule } from './admin-routing.module';
     imports: [SharedModule, ProductModule, OrdersModule, AdminRoutingModule],
     exports: [AdminRoutingModule],
 })
-export class AdminModule {}
+export class AdminModule {
+}

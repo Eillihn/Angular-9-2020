@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from 'src/app/shared/shared.module';
-import {
-    ProcessOrderComponent,
-    OrderListComponent,
-    OrderItemComponent,
-} from './components';
+import { OrderItemComponent, OrderListComponent, ProcessOrderComponent, } from './components';
 import { OrdersRoutingModule } from './orders-routing.module';
 
 @NgModule({
@@ -17,4 +13,5 @@ import { OrdersRoutingModule } from './orders-routing.module';
     imports: [SharedModule, OrdersRoutingModule],
     exports: [OrderListComponent, OrdersRoutingModule],
 })
-export class OrdersModule {}
+export class OrdersModule {
+}

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ProcessOrderComponent } from './components';
 
 const routes: Routes = [
@@ -13,4 +13,5 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
 })
-export class OrdersRoutingModule {}
+export class OrdersRoutingModule {
+}

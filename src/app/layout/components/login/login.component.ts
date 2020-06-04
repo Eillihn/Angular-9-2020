@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs';
@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     message: string;
     private unsubscribe: Subject<void> = new Subject();
 
-    constructor(public authService: AuthService, private router: Router) {}
+    constructor(public authService: AuthService, private router: Router) {
+    }
 
     ngOnDestroy() {
         this.unsubscribe.complete();
@@ -46,11 +47,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.setMessage();
     }
 
-    private setMessage() {
-        this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-    }
-
     ngOnInit() {
         this.setMessage();
+    }
+
+    private setMessage() {
+        this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
     }
 }

@@ -13,7 +13,8 @@ export class AdminDashboardComponent implements OnInit {
     sessionId: Observable<string>;
     token: Observable<string>;
 
-    constructor(private route: ActivatedRoute) {}
+    constructor(private route: ActivatedRoute) {
+    }
 
     ngOnInit(): void {
         // Capture the session ID if available

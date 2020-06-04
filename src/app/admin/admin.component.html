@@ -6,11 +6,11 @@
             <ul class="nav nav-tabs">
                 <li>
                     <a
+                        [routerLinkActiveOptions]="{ exact: true }"
                         mat-button
                         routerLink="./"
                         routerLinkActive="active"
-                        [routerLinkActiveOptions]="{ exact: true }"
-                        >Dashboard</a
+                    >Dashboard</a
                     >
                 </li>
                 <li>
@@ -18,7 +18,7 @@
                         mat-button
                         routerLink="./products"
                         routerLinkActive="active"
-                        >Manage Products</a
+                    >Manage Products</a
                     >
                 </li>
                 <li>
@@ -26,7 +26,7 @@
                         mat-button
                         routerLink="./orders"
                         routerLinkActive="active"
-                        >Manage Orders</a
+                    >Manage Orders</a
                     >
                 </li>
             </ul>

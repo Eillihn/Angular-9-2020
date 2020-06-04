@@ -8,7 +8,8 @@ import { CartService } from './cart.service';
 export class OrderService {
     orders: OrderModel[] = [];
 
-    constructor(public cartService: CartService) {}
+    constructor(public cartService: CartService) {
+    }
 
     createOrder(
         cartProducts: CartProductModel[],
@@ -19,7 +20,7 @@ export class OrderService {
             id: '' + new Date().getTime(),
             date: new Date(),
             status: OrderStatus.OPEN,
-            cartProducts: { ...cartProducts },
+            cartProducts: {...cartProducts},
             totalQuantity,
             total,
         } as OrderModel);

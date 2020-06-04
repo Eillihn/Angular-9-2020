@@ -9,4 +9,5 @@ import { ProductRoutingModule } from './product-routing.module';
     imports: [SharedModule],
     exports: [ProductRoutingModule, ProductRoutingModule.components],
 })
-export class ProductModule {}
+export class ProductModule {
+}

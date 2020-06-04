@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 import { ProductModel } from 'src/app/core/models';
-import { ProductsService } from '../../../core/services/product/products.service';
+import { ProductsService } from 'src/app/core/services';
 
 @Component({
     selector: 'app-product-details',
@@ -16,12 +16,13 @@ export class ProductDetailsComponent implements OnInit {
     constructor(
         public productsService: ProductsService,
         private route: ActivatedRoute
-    ) {}
+    ) {
+    }
 
     ngOnInit(): void {
         const observer = {
             next: (product: ProductModel) => {
-                this.product = { ...product } as ProductModel;
+                this.product = {...product} as ProductModel;
             },
             error: (err: any) => console.log(err),
         };

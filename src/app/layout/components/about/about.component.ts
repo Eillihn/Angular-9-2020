@@ -1,14 +1,14 @@
-import { Component, OnInit, Inject, Optional } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 
 import {
+    APP_CONFIG,
     CartService,
-    LocalStorageService,
     ConfigOptionsService,
     ConstantService,
-    APP_CONFIG,
-    GeneratorServiceNFactory,
-    GeneratorService,
     GENERATOR_SERVICE_TOKEN,
+    GeneratorService,
+    GeneratorServiceNFactory,
+    LocalStorageService,
 } from 'src/app/core/services';
 import { AppConfig } from 'src/app/core/models';
 
@@ -17,9 +17,9 @@ import { AppConfig } from 'src/app/core/models';
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.scss'],
     providers: [
-        { provide: LocalStorageService, useClass: LocalStorageService },
-        { provide: ConfigOptionsService, useClass: ConfigOptionsService },
-        { provide: APP_CONFIG, useValue: ConstantService },
+        {provide: LocalStorageService, useClass: LocalStorageService},
+        {provide: ConfigOptionsService, useClass: ConfigOptionsService},
+        {provide: APP_CONFIG, useValue: ConstantService},
         {
             provide: GENERATOR_SERVICE_TOKEN,
             useFactory: GeneratorServiceNFactory.bind(null, 10),
@@ -33,7 +33,8 @@ export class AboutComponent implements OnInit {
         @Optional() public configOptionsService: ConfigOptionsService,
         @Inject(APP_CONFIG) @Optional() public config: AppConfig,
         @Inject(GENERATOR_SERVICE_TOKEN) public generator: GeneratorService
-    ) {}
+    ) {
+    }
 
     ngOnInit(): void {
         this.localStorageService.setItem('TEST', 'TEST');

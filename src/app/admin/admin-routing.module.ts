@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-import { CanDeactivateGuard } from 'src/app/core';
+import { AuthGuard, CanDeactivateGuard } from 'src/app/core';
 import { ProductFormComponent } from 'src/app/product';
 import { ProductResolveGuard } from 'src/app/product/guards';
-import {
-    AdminComponent,
-    AdminDashboardComponent,
-    ManageOrdersComponent,
-    ManageProductsComponent,
-} from '.';
-import { AuthGuard } from 'src/app/core';
+import { AdminComponent, AdminDashboardComponent, ManageOrdersComponent, ManageProductsComponent, } from '.';
 
 const routes: Routes = [
     {
@@ -18,27 +12,22 @@ const routes: Routes = [
         component: AdminComponent,
         canActivate: [AuthGuard],
         children: [
+            {path: 'orders', component: ManageOrdersComponent},
+            {path: 'products', component: ManageProductsComponent},
             {
-                path: '',
-                children: [
-                    { path: 'orders', component: ManageOrdersComponent },
-                    { path: 'products', component: ManageProductsComponent },
-                    {
-                        path: 'products/add',
-                        canDeactivate: [CanDeactivateGuard],
-                        component: ProductFormComponent,
-                    },
-                    {
-                        path: 'products/edit/:productID',
-                        canDeactivate: [CanDeactivateGuard],
-                        component: ProductFormComponent,
-                        resolve: {
-                            product: ProductResolveGuard,
-                        },
-                    },
-                    { path: '', component: AdminDashboardComponent },
-                ],
+                path: 'products/add',
+                canDeactivate: [CanDeactivateGuard],
+                component: ProductFormComponent,
             },
+            {
+                path: 'products/edit/:productID',
+                canDeactivate: [CanDeactivateGuard],
+                component: ProductFormComponent,
+                resolve: {
+                    product: ProductResolveGuard,
+                },
+            },
+            {path: '', component: AdminDashboardComponent},
         ],
     },
 ];

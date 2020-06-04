@@ -7,7 +7,8 @@ export class HighlightDirective {
     @HostBinding('class')
     attrClass: string;
 
-    constructor() {}
+    constructor() {
+    }
 
     @HostListener('mouseenter', ['$event'])
     enter() {
