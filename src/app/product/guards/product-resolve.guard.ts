@@ -41,3 +41,4 @@ export class ProductResolveGuard implements Resolve<ProductModule> {
         );
     }
 }
+// Может его перемеситить в админку
