@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard, CanDeactivateGuard } from 'src/app/core';
 import { ProductFormComponent } from 'src/app/product';
-import { ProductResolveGuard } from 'src/app/product/guards';
+import { ProductResolveGuard } from './guards';
 import { AdminComponent, AdminDashboardComponent, ManageOrdersComponent, ManageProductsComponent, } from '.';
 
 const routes: Routes = [

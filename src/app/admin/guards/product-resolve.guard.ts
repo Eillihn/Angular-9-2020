@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, map, take } from 'rxjs/operators';
 
-import { ProductModule } from './../product.module';
+import { ProductModule } from 'src/app/product/product.module';
 import { ProductsService } from 'src/app/core/services';
 import { ProductModel } from 'src/app/core';
 
