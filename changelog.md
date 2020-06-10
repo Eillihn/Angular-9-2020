@@ -19,18 +19,18 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - App was divided in AppModule, CartModule, ProductsModule, OrdersModule, SharedModule;
-- Input-Output communication between ProductListComponent/ProductItemComponent, CartLictComponent/CartItemComponent was implemented;
+- Input-Output communication between ProductListComponent/ProductItemComponent, CartListComponent/CartItemComponent was implemented;
 - CartListComponent shows total sum and count of products in cart;
 - CartItemComponent can change product count and remove it from cart;
-- OnPush strategy was implemented for representation models: CartItemComponent & ProductItemComponent (works with ProductCommunicatorService);
-- OnInit, OnDestroy hooks methods were used;
-- click DOM event was used in ProductItemComponent for Buy button;
-- appTitle template reference was added to AppComponent to show app title from class;
+- OnPush strategy was being implement for representation models: CartItemComponent & ProductItemComponent (works with ProductCommunicatorService);
+- OnInit, OnDestroy hooks methods were being use;
+- click DOM event was being use in ProductItemComponent for Buy button;
+- appTitle template reference was being add to AppComponent to show app title from class;
 - HighlightDirective used @HostBinding, @HostListener decorators to highlight cart item on hover;
-- ngClass directive is used in ProductItemComponent to highlight when there is 1 available product left.
+- ngClass directive is being use in ProductItemComponent to highlight when there is 1 available product left.
 
 # 2020-05-19: Task 3. Services and DI
-- CartService API was updated to: 
+- CartService API was being update to: 
     - cartProducts, 
     - totalQuantity, 
     - totalSum, 
@@ -44,15 +44,15 @@ All notable changes to this project will be documented in this file.
 - ConstantsService was added as literal { App: "Shop", Ver: "1.0" };
 - GeneratorService was added to generate random string length n with chars A-Za-z0-9;
 - AboutComponent was added to show that services work;
-- ZoomDirective was added to zoom font size, it uses ElementRef + Renderer2. Usage was added to AboutComponent.
+- ZoomDirective was added to zoom font size, it uses ElementRef + Renderer2. Usage was being add to AboutComponent.
 
 # 2020-05-24: Task 4. Pipes
-- uppercase, titlecase, currency build-in pipes were added;
-- ProductService#getProducts() was changed to return promise, async pipe was added to ProductListComponent;
+- uppercase, titlecase, currency build-in pipes were being add;
+- ProductService#getProducts() was changed to return promise, async pipe was being add to ProductListComponent;
 - OrderByPipe was created to sort cart products by price, quantity and name.
 
 # 2020-06-02: Task 5. Routing
-- Routing was added:
+- Routing was being add:
     - ProductRoutingModule:
         /products-list
         /product/:productID
@@ -66,4 +66,11 @@ All notable changes to this project will be documented in this file.
         /admin/product/add
         /admin/product/edit:productID + resolve guard
         /admin/orders
-- cart items are saved/restored to/from localstorage.
+- cart items are being save/restore to/from localstorage.
+
+# 2020-06-10: Task 6. HttpClient
+- Products, orders are being receive from json server;
+- Products are being receive by use of Observable, orders - Promise;
+- TimingInterceptor was being add for requests with 'products' in url;
+- AppSettings service was being add to look after app settings with THEME property in Local Storage, 
+if fail - try with 2 retry to receive it from assets/app-settings.json.

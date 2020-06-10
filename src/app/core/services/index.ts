@@ -8,3 +8,4 @@ export * from './auth.service';
 export * from './dialog.service';
 export * from './product/products.service';
 export * from './order.service';
+export * from './app.settings';

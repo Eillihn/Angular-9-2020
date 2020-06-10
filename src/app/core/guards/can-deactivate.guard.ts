@@ -17,7 +17,6 @@ export class CanDeactivateGuard
         | Promise<boolean | UrlTree>
         | boolean
         | UrlTree {
-        console.log('CanDeactivate Guard is called');
         return component.canDeactivate();
     }
 }

@@ -1,39 +1,31 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row class="container">
-        <a mat-button routerLink="/about"
-        >
+        <a mat-button routerLink="/about">
             <mat-icon aria-hidden="false" aria-label="Home">store</mat-icon>
             <h1>Shop</h1>
         </a>
         <nav>
             <ul class="nav">
                 <li>
-                    <a
-                        mat-button
-                        routerLink="/products-list"
-                        routerLinkActive="active"
-                    >Products</a
-                    >
+                    <a mat-button routerLink="/products-list" routerLinkActive="active">Products</a>
                 </li>
                 <li>
-                    <a mat-button routerLink="/cart" routerLinkActive="active"
-                    >Cart</a
-                    >
+                    <a mat-button routerLink="/cart" routerLinkActive="active">Cart</a>
                 </li>
                 <li>
-                    <a mat-button routerLink="/order" routerLinkActive="active"
-                    >Order</a
-                    >
+                    <a mat-button routerLink="/order" routerLinkActive="active">Order</a>
                 </li>
                 <li>
-                    <a mat-button routerLink="/admin" routerLinkActive="active"
-                    >Admin</a
-                    >
+                    <a mat-button routerLink="/admin" routerLinkActive="active">Admin</a>
                 </li>
                 <li>
-                    <a mat-button routerLink="/login" routerLinkActive="active"
-                    >Login</a
-                    >
+                    <a mat-button routerLink="/login" routerLinkActive="active">Login</a>
+                </li>
+                <li class="select-theme">
+                    <button mat-button (click)="toggleDarkTheme()">
+                        <mat-icon>format_color_fill</mat-icon>
+                        <span>Switch to {{isDarkTheme ? 'Light' : 'Dark'}}</span>
+                    </button>
                 </li>
             </ul>
         </nav>

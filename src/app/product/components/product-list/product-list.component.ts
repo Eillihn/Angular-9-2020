@@ -18,8 +18,7 @@ export class ProductListComponent implements OnInit {
         public productService: ProductsService,
         public cartService: CartService,
         public router: Router
-    ) {
-    }
+    ) {}
 
     ngOnInit(): void {
         this.products = this.productService.getProducts();
@@ -40,6 +39,6 @@ export class ProductListComponent implements OnInit {
     }
 
     onDeleteProduct(product: ProductModel): void {
-        this.productService.deleteProduct(product);
+        this.products = this.productService.deleteProduct(product);
     }
 }

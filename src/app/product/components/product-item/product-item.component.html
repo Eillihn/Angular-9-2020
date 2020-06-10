@@ -1,15 +1,11 @@
 <mat-card class="product">
-    <mat-card-header>
-        <mat-card-subtitle>
-            {{ product.category | uppercase }}</mat-card-subtitle
-        >
-        <mat-card-title
-        ><a (click)="onGoToProduct()" color="primary" mat-button>{{
-            product.name
-            }}</a></mat-card-title
-        >
-    </mat-card-header>
+    <mat-card-title>
+        <a (click)="onGoToProduct()" color="primary" mat-button>
+            {{ product.name }}
+        </a>
+    </mat-card-title>
     <mat-card-content>
+        <div>Category: {{ product.category }}</div>
         <div>Price: {{ product.price | currency }}</div>
         <div>{{ product.description }}</div>
         <div>Available Count: {{ product.availableCount }}</div>
