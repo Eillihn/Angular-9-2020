@@ -15,8 +15,7 @@ export class AppSettings {
     channel$: Observable<AppSettingsModel> = this.channel.asObservable();
 
     constructor(private localStorageService: LocalStorageService, private http: HttpClient) {
-        // @ts-ignore
-        this.settings = JSON.parse(localStorageService.getItem('APP_SETTINGS') as AppSettingsModel);
+        this.settings = JSON.parse(localStorageService.getItem('APP_SETTINGS') as string) as AppSettingsModel;
         if (this.settings) {
             this.channel.next(this.settings);
         } else {
@@ -27,7 +26,7 @@ export class AppSettings {
 
     fetch(): void {
         this.http
-            .get('123/assets/app-settings.json')
+            .get('/assets/app-settings.json')
             .pipe(retry(2),
                 map((res: Response) => {
                     this.settings = (res || {}) as AppSettingsModel;
