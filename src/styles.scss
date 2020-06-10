@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
 
 html,
 body {
@@ -25,4 +26,18 @@ li {
 
 mat-icon {
     padding: 0 5px;
+}
+
+
+$primary: mat-palette($mat-blue);
+$accent: mat-palette($mat-grey);
+$warn: mat-palette($mat-indigo);
+$default-warn: mat-palette($mat-red);
+$dark-theme: mat-dark-theme($primary, $accent, $warn);
+
+.dark-theme {
+    @include angular-material-theme($dark-theme);
+    $accent: map-get($dark-theme, accent);
+    $background: map-get($dark-theme, background);
+    $background-color: mat-color($mat-dark-theme-background, card);
 }

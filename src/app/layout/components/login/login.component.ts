@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
-import { AuthService } from './../../../core';
+import {AuthService} from './../../../core';
 
 @Component({
     selector: 'app-login',

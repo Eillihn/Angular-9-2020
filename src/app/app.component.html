@@ -1,5 +1,7 @@
-<app-header></app-header>
-<!-- <h1 #appTitle></h1> -->
-<div class="container">
-    <router-outlet></router-outlet>
+<div class="mat-app-background app-wrapper" [ngClass]="{'dark-theme': isDarkTheme}">
+    <app-header></app-header>
+    <!-- <h1 #appTitle></h1> -->
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
 </div>

@@ -3,8 +3,9 @@
     margin-bottom: 0;
 }
 
-.nav {
+nav {
     margin: 0 20px;
+    width: 100%;
 }
 
 .active {
@@ -14,4 +15,13 @@
 
 h1 {
     display: inline-block;
+}
+
+ul {
+    display: flex;
+}
+
+.select-theme {
+    flex: 100%;
+    text-align: right;
 }

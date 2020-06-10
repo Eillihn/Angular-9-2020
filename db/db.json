@@ -1,0 +1,101 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Name 1",
+      "description": "Description 1ll",
+      "price": 10,
+      "availableCount": 5,
+      "category": "Test Category 1"
+    },
+    {
+      "id": "2",
+      "name": "Name 2",
+      "description": "Description 2",
+      "price": 20,
+      "availableCount": 2,
+      "category": "Test Category 2"
+    },
+    {
+      "id": "3",
+      "name": "Name 3",
+      "description": "Description 3",
+      "price": 30,
+      "availableCount": 1,
+      "category": "Test Category 1"
+    }
+  ],
+  "orders": [
+    {
+      "id": "1591472586770",
+      "date": "2020-06-05T19:00:06.772Z",
+      "status": "CLOSED",
+      "cartProducts": {
+        "0": {
+          "product": {
+            "id": "1",
+            "name": "Name 1",
+            "description": "Description 1",
+            "price": 10,
+            "availableCount": 4,
+            "category": "Test Category 1"
+          },
+          "count": 2
+        }
+      },
+      "totalQuantity": 2,
+      "total": 20
+    },
+    {
+      "id": "1591472586772",
+      "date": "2020-06-06T19:43:06.772Z",
+      "status": "OPEN",
+      "cartProducts": {
+        "0": {
+          "product": {
+            "id": "1",
+            "name": "Name 1",
+            "description": "Description 1",
+            "price": 10,
+            "availableCount": 4,
+            "category": "Test Category 1"
+          },
+          "count": 1
+        },
+        "1": {
+          "product": {
+            "id": "2",
+            "name": "Name 2",
+            "description": "Description 2",
+            "price": 20,
+            "availableCount": 1,
+            "category": "Test Category 2"
+          },
+          "count": 1
+        }
+      },
+      "totalQuantity": 2,
+      "total": 30
+    },
+    {
+      "id": "1591813565584",
+      "date": "2020-06-10T18:26:05.584Z",
+      "status": "OPEN",
+      "cartProducts": {
+        "0": {
+          "product": {
+            "id": "1",
+            "name": "Name 1",
+            "description": "Description 1ll",
+            "price": 10,
+            "availableCount": 4,
+            "category": "Test Category 1"
+          },
+          "count": 1
+        }
+      },
+      "totalQuantity": 1,
+      "total": 10
+    }
+  ]
+}

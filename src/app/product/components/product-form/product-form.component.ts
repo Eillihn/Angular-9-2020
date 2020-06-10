@@ -1,36 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
 import { pluck } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { Location } from '@angular/common';
 
-import { CanComponentDeactivate, Category, DialogService, ProductModel, } from 'src/app/core';
+import {
+    CanComponentDeactivate,
+    Category,
+    DialogService,
+    ProductModel,
+} from 'src/app/core';
 import { ProductsService } from 'src/app/core/services';
-import { ProductModule } from '../../product.module';
 
 @Component({
     templateUrl: './product-form.component.html',
     styleUrls: ['./product-form.component.scss'],
 })
-export class ProductFormComponent implements OnInit, CanComponentDeactivate {
+export class ProductFormComponent
+    implements OnInit, CanComponentDeactivate, OnDestroy {
     product: ProductModel;
-    originalProduct: ProductModule;
+    originalProduct: ProductModel;
     Category = Category;
+    private sub: Subscription;
 
     constructor(
         private productsService: ProductsService,
         private route: ActivatedRoute,
         private router: Router,
-        private dialogService: DialogService
-    ) {
-    }
+        private dialogService: DialogService,
+        private location: Location
+    ) {}
 
     ngOnInit(): void {
         this.route.data
             .pipe(pluck('product'))
             .subscribe((product: ProductModel) => {
-                this.product = {...product} as ProductModel;
-                this.originalProduct = {...product} as ProductModel;
+                this.product = { ...product } as ProductModel;
+                this.originalProduct = { ...product } as ProductModel;
             });
+    }
+
+    ngOnDestroy(): void {
+        if (this.sub) {
+            this.sub.unsubscribe();
+        }
     }
 
     canDeactivate():
@@ -48,22 +61,25 @@ export class ProductFormComponent implements OnInit, CanComponentDeactivate {
     }
 
     onSave() {
-        const product = {...this.product} as ProductModel;
-        product.category = Category[product.category] || product.category;
-        if (product.id) {
-            this.productsService.updateProduct(product);
-        } else {
-            this.productsService.createProduct(product);
-        }
-        this.originalProduct = {...this.product};
-        this.onGoBack();
+        const method = this.product.id ? 'updateProduct' : 'createProduct';
+
+        const observer = {
+            next: (savedProduct: ProductModel) => {
+                this.originalProduct = { ...savedProduct };
+                this.onGoBack();
+            },
+            error: (err: any) => console.log(err),
+        };
+        this.sub = this.productsService[method](this.product).subscribe(
+            observer
+        );
     }
 
     onGoBack(): void {
-        this.router.navigate(['/admin/products']);
+        this.location.back();
     }
 
     compareCategories(o1: string, o2: string): boolean {
-        return Category[o1] === o2;
+        return o1 === o2;
     }
 }

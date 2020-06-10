@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { CartProductModel, ProductModel } from 'src/app/core/models';
-import { ProductCommunicatorService } from './product-communicator/product-communicator.service';
-import { LocalStorageService } from './local-storage/local-storage.service';
+import {Injectable} from '@angular/core';
+import {CartProductModel, ProductModel} from 'src/app/core/models';
+import {ProductCommunicatorService} from './product-communicator/product-communicator.service';
+import {LocalStorageService} from './local-storage/local-storage.service';
 
 @Injectable({
     providedIn: 'root',
@@ -18,12 +18,10 @@ export class CartService {
         const cache =
             (this.localStorageService.getItem('CART_PRODUCTS') as []) || [];
         cache.forEach((el: CartProductModel) => {
-            this.cartProducts.push(
-                new CartProductModel(
-                    el.product as ProductModel,
-                    el.count as number
-                )
-            );
+            this.cartProducts.push({
+                product: el.product as ProductModel,
+                count: el.count as number,
+            } as CartProductModel);
         });
         this.updateCartData();
     }
@@ -35,7 +33,10 @@ export class CartService {
         if (cartProduct) {
             cartProduct.count++;
         } else {
-            cartProduct = new CartProductModel(product, 1);
+            cartProduct = {
+                product,
+                count: 1,
+            } as CartProductModel;
             this.cartProducts.push(cartProduct);
         }
         cartProduct.product.availableCount--;
@@ -87,7 +88,7 @@ export class CartService {
             0
         );
         this.totalSum = this.cartProducts.reduce(
-            (prev, cur) => prev + cur.getTotal(),
+            (prev, cur) => prev + cur.count * cur.product.price,
             0
         );
         this.localStorageService.setItem('CART_PRODUCTS', this.cartProducts);

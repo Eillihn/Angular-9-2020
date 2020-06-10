@@ -5,3 +5,5 @@ export * from './config-option.model';
 export * from './app-config.model';
 export * from './order.model';
 export * from './order-status.model';
+export  * from './app-settings.model';
+export * from './app-theme.model';
