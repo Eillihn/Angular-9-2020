@@ -12,7 +12,8 @@ export class TimingInterceptor implements HttpInterceptor {
                 .pipe(
                     map((event: HttpEvent<any>) => {
                         if (event instanceof HttpResponse) {
-                            console.info(`TimingInterceptor: ${req.url} took ${performance.now() - start} ms`);
+                            // console.info не проходит линтинг
+                            console.log(`TimingInterceptor: ${req.url} took ${performance.now() - start} ms`);
                             return event;
                         }
                     }));
