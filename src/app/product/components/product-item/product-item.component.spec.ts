@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductItemComponent } from './product-item.component';
-import { Category, ProductModel } from 'src/app/core/models';
+import { Category, Product } from 'src/app/core/models';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('ProductItemComponent', () => {
@@ -26,7 +26,7 @@ describe('ProductItemComponent', () => {
             price: 10,
             availableCount: 5,
             category: Category.C1,
-        } as ProductModel;
+        } as Product;
         fixture.detectChanges();
     });
 

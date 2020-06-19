@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
-import { CartProductModel } from 'src/app/core/models';
-import { CartService } from 'src/app/core/services';
+import { CartProduct } from 'src/app/core/models';
+import { CartFacade } from 'src/app/core/@ngrx';
 
 @Component({
     selector: 'app-cart-list',
@@ -37,5 +38,14 @@ export class CartListComponent implements OnInit {
 
     getTotalSum(): number {
         return this.cartService.totalSum;
+    }
+
+    changeSortName(sortName): void {
+        this.cartFacade.setSortName({ sortName });
+    }
+
+    changeDirection(): void {
+        this.sortDirection = !this.sortDirection;
+        this.cartFacade.setDirection({ sortDirection: this.sortDirection });
     }
 }

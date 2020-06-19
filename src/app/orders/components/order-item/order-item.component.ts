@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { OrderModel } from 'src/app/core/models';
+import { Order } from 'src/app/core/models';
 
 @Component({
     selector: 'app-order-item',
@@ -8,7 +8,7 @@ import { OrderModel } from 'src/app/core/models';
     styleUrls: ['./order-item.component.scss'],
 })
 export class OrderItemComponent implements OnInit {
-    @Input() order: OrderModel;
+    @Input() order: Order;
 
     constructor() {
     }

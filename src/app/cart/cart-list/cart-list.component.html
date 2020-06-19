@@ -2,16 +2,15 @@
     <div *ngIf="cartProducts.length" class="sort">
         <mat-form-field>
             <mat-label>Order By</mat-label>
-            <mat-select [formControl]="sortForm">
+            <mat-select [formControl]="sortForm" (selectionChange)="changeSortName($event.value)">
                 <mat-option
                     *ngFor="let sortName of sortList"
                     [value]="sortName"
-                >{{ sortName | titlecase }}</mat-option
-                >
+                >{{ sortName | titlecase }}</mat-option>
             </mat-select>
         </mat-form-field>
         <button
-            (click)="sortDirection = !sortDirection"
+            (click)="changeDirection()"
             *ngIf="sortForm.value"
             class="sort-arrow"
             mat-stroked-button
@@ -33,8 +32,7 @@
             "
             [cartProduct]="cartProduct"
             appHighlight
-            class="column-rows"
-        ></app-cart-item>
+            class="column-rows"></app-cart-item>
         <div class="column-rows">
             <h3>Total: {{ getTotalSum() | currency }}</h3>
         </div>

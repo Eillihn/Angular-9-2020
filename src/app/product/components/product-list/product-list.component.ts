@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { ProductsService } from 'src/app/core/services';
-import { CartService, ProductModel } from 'src/app/core';
+import { CartFacade, ProductsFacade, RouterFacade } from 'src/app/core/@ngrx';
+import { Product } from 'src/app/core';
 
 @Component({
     selector: 'app-product-list',
@@ -11,34 +10,42 @@ import { CartService, ProductModel } from 'src/app/core';
     styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-    products: Observable<ProductModel[]>;
+    products$: Observable<ReadonlyArray<Product>>;
+    productsError$: Observable<Error | string>;
+
     @Input() editable: boolean;
 
     constructor(
-        public productService: ProductsService,
-        public cartService: CartService,
-        public router: Router
-    ) {}
+        private productsFacade: ProductsFacade,
+        private cartFacade: CartFacade,
+        private routerFacade: RouterFacade,
+    ) {
+    }
 
     ngOnInit(): void {
-        this.products = this.productService.getProducts();
+        this.products$ = this.productsFacade.products$;
+        this.productsError$ = this.productsFacade.productsError$;
     }
 
-    onBuyProduct(product: ProductModel): void {
-        this.cartService.addProduct(product);
+    onBuyProduct(product: Product): void {
+        const availableCount = product.availableCount - 1;
+        const productToBuy: Product = { ...product, availableCount };
+        this.cartFacade.addProduct({ product: { ...product } });
+        this.productsFacade.buyProduct({ product: productToBuy });
     }
 
-    onGoToProduct(product: ProductModel): void {
+    onGoToProduct(product: Product): void {
         const link = ['/product', product.id];
-        this.router.navigate(link);
+        this.routerFacade.goTo({ path: link });
     }
 
-    onEditProduct(product: ProductModel): void {
+    onEditProduct(product: Product): void {
         const link = ['/admin/products/edit', product.id];
-        this.router.navigate(link);
+        this.routerFacade.goTo({ path: link });
     }
 
-    onDeleteProduct(product: ProductModel): void {
-        this.products = this.productService.deleteProduct(product);
+    onDeleteProduct(product: Product): void {
+        const productToDelete: Product = { ...product };
+        this.productsFacade.deleteProduct({ product: productToDelete });
     }
 }

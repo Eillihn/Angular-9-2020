@@ -1,10 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import {AuthService} from './../../../core';
+import { AuthService } from 'src/app/core';
+import { RouterFacade } from 'src/app/core/@ngrx';
 
 @Component({
     selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     message: string;
     private unsubscribe: Subject<void> = new Subject();
 
-    constructor(public authService: AuthService, private router: Router) {
+    constructor(public authService: AuthService, private routerFacade: RouterFacade) {
     }
 
     ngOnDestroy() {
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                     const redirect = this.authService.redirectUrl
                         ? this.authService.redirectUrl
                         : '/admin';
-                    this.router.navigate([redirect]);
+                    this.routerFacade.goTo({ path: [redirect] });
                 }
             },
             error: (err: any) => console.log(err),

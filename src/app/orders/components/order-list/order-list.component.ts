@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from 'src/app/core/services';
-import { OrderModel } from 'src/app/core/models';
+import { Observable } from 'rxjs';
+import { EntityCollectionService, EntityServices } from '@ngrx/data';
+
+import { Order } from 'src/app/core/models';
 
 @Component({
     selector: 'app-order-list',
@@ -8,11 +10,14 @@ import { OrderModel } from 'src/app/core/models';
     styleUrls: ['./order-list.component.scss'],
 })
 export class OrderListComponent implements OnInit {
-    orders: Promise<OrderModel[]>;
+    orders$: Observable<ReadonlyArray<Order>>;
+    private ordersService: EntityCollectionService<Order>;
 
-    constructor(public orderService: OrderService) {}
+    constructor(entityServices: EntityServices) {
+        this.ordersService = entityServices.getEntityCollectionService('Order');
+    }
 
     ngOnInit(): void {
-        this.orders = this.orderService.getOrders();
+        this.orders$ = this.ordersService.entities$;
     }
 }

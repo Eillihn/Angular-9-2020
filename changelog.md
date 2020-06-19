@@ -74,3 +74,9 @@ All notable changes to this project will be documented in this file.
 - TimingInterceptor was being add for requests with 'products' in url;
 - AppSettings service was being add to look after app settings with THEME property in Local Storage, 
 if fail - try with 2 retry to receive it from assets/app-settings.json.
+
+# 2020-06-19: Task 7. NgRx
+- Products and cart have been rewritten using @ngrx/store, @ngrx/effects;
+- @ngrx/router-store is being add;
+- @ngrx/entity is being use for products;
+- @ngrx/data is being for orders.

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { ProductModel } from '../../models';
+import { Product } from '../../models';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ProductCommunicatorService {
-    private channel = new Subject<ProductModel>();
+    private channel = new Subject<Product>();
 
-    channel$: Observable<ProductModel> = this.channel.asObservable();
+    channel$: Observable<Product> = this.channel.asObservable();
 
-    publishData(data: ProductModel) {
+    publishData(data: Product) {
         this.channel.next(data);
     }
 }

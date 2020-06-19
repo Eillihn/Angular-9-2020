@@ -1,37 +1,32 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import { ProductModel } from 'src/app/core/models';
-import { ProductsService } from 'src/app/core/services';
+import { Product } from 'src/app/core/models';
+import { ProductsFacade } from 'src/app/core/@ngrx';
 
 @Component({
     selector: 'app-product-details',
     templateUrl: './product-details.component.html',
     styleUrls: ['./product-details.component.scss'],
 })
-export class ProductDetailsComponent implements OnInit {
-    @Input() product: ProductModel = {} as ProductModel;
+export class ProductDetailsComponent implements OnInit, OnDestroy {
+    @Input() product: Product = {} as Product;
+    private componentDestroyed$: Subject<void> = new Subject<void>();
 
-    constructor(
-        public productsService: ProductsService,
-        private route: ActivatedRoute
-    ) {
+    constructor(private productsFacade: ProductsFacade) {
     }
 
     ngOnInit(): void {
-        const observer = {
-            next: (product: ProductModel) => {
-                this.product = {...product} as ProductModel;
-            },
-            error: (err: any) => console.log(err),
-        };
-        this.route.paramMap
-            .pipe(
-                switchMap((params: ParamMap) =>
-                    this.productsService.getProduct(params.get('productID'))
-                )
-            )
-            .subscribe(observer);
+        this.productsFacade.selectedProductByUrl$
+            .pipe(takeUntil(this.componentDestroyed$))
+            .subscribe((product: Product) => {
+                this.product = { ...product } as Product;
+            });
+    }
+
+    ngOnDestroy(): void {
+        this.componentDestroyed$.next();
+        this.componentDestroyed$.complete();
     }
 }
