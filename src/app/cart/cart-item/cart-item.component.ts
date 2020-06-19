@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ChangeDetectionStrategy, Component, Input, } from '@angular/core';
 
-import { CartService, ProductCommunicatorService } from 'src/app/core/services';
-import { CartProductModel } from 'src/app/core/models';
+import { CartProduct } from 'src/app/core/models';
+import { CartFacade, ProductsFacade } from 'src/app/core/@ngrx';
 
 @Component({
     selector: 'app-cart-item',
@@ -10,38 +9,39 @@ import { CartProductModel } from 'src/app/core/models';
     styleUrls: ['./cart-item.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CartItemComponent implements OnInit, OnDestroy {
-    @Input() cartProduct: CartProductModel;
-    private sub: Subscription;
+export class CartItemComponent {
+    @Input() cartProduct: CartProduct;
 
     constructor(
-        public cartService: CartService,
-        public communicator: ProductCommunicatorService,
-        public cd: ChangeDetectorRef
+        private productsFacade: ProductsFacade,
+        private cartFacade: CartFacade
     ) {
     }
 
-    ngOnInit(): void {
-        this.sub = this.communicator.channel$.subscribe((data) => {
-            if (data.id === this.cartProduct.product.id) {
-                this.cd.detectChanges();
-            }
-        });
-    }
-
-    ngOnDestroy() {
-        this.sub.unsubscribe();
-    }
-
     onRemoveProduct(): void {
-        this.cartService.removeProduct(this.cartProduct);
+        const productToReturn = {
+            ...this.cartProduct.product,
+            availableCount: this.cartProduct.product.availableCount + this.cartProduct.count
+        };
+        this.cartFacade.removeProduct({ cartProduct: this.cartProduct });
+        this.productsFacade.returnProduct({ product: productToReturn });
     }
 
     onIncreaseQuantity(): void {
-        this.cartService.increaseQuantity(this.cartProduct);
+        const productToBuy = {
+            ...this.cartProduct.product,
+            availableCount: this.cartProduct.product.availableCount - 1
+        };
+        this.cartFacade.increaseQuantity({ cartProduct: this.cartProduct });
+        this.productsFacade.buyProduct({ product: productToBuy });
     }
 
     onDecreaseQuantity(): void {
-        this.cartService.decreaseQuantity(this.cartProduct);
+        const productToReturn = {
+            ...this.cartProduct.product,
+            availableCount: this.cartProduct.product.availableCount + 1
+        };
+        this.cartFacade.decreaseQuantity({ cartProduct: this.cartProduct });
+        this.productsFacade.returnProduct({ product: productToReturn });
     }
 }

@@ -20,24 +20,20 @@ export class CartListComponent implements OnInit {
         'Count',
         'Actions',
     ];
-    cartProducts: CartProductModel[];
+    cartProducts$: Observable<ReadonlyArray<CartProduct>>;
+    totalQuantity$: Observable<number>;
+    totalSum$: Observable<number>;
     sortForm = new FormControl();
     sortList: string[] = ['price', 'quantity', 'name'];
     sortDirection: boolean = false;
 
-    constructor(public cartService: CartService) {
+    constructor(private cartFacade: CartFacade) {
     }
 
     ngOnInit(): void {
-        this.cartProducts = this.cartService.cartProducts;
-    }
-
-    getTotalQuantity(): number {
-        return this.cartService.totalQuantity;
-    }
-
-    getTotalSum(): number {
-        return this.cartService.totalSum;
+        this.cartProducts$ = this.cartFacade.cartProducts$;
+        this.totalQuantity$ = this.cartFacade.totalQuantity$;
+        this.totalSum$ = this.cartFacade.totalSum$;
     }
 
     changeSortName(sortName): void {

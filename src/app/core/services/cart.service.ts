@@ -1,96 +1,28 @@
-import {Injectable} from '@angular/core';
-import {CartProductModel, ProductModel} from 'src/app/core/models';
-import {ProductCommunicatorService} from './product-communicator/product-communicator.service';
-import {LocalStorageService} from './local-storage/local-storage.service';
+import { Injectable } from '@angular/core';
+import { CartProduct, Product } from 'src/app/core/models';
+import { LocalStorageService } from './local-storage/local-storage.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CartService {
-    cartProducts: CartProductModel[] = [];
-    totalQuantity: number = 0;
-    totalSum: number = 0;
 
-    constructor(
-        public communicator: ProductCommunicatorService,
-        public localStorageService: LocalStorageService
-    ) {
-        const cache =
-            (this.localStorageService.getItem('CART_PRODUCTS') as []) || [];
-        cache.forEach((el: CartProductModel) => {
-            this.cartProducts.push({
-                product: el.product as ProductModel,
+    constructor(private localStorageService: LocalStorageService) {
+    }
+
+    getStorageData(): CartProduct[] {
+        const data = [];
+        const cache = this.localStorageService.getItem('CART_PRODUCTS') as [] || [];
+        cache.forEach((el: CartProduct) => {
+            data.push({
+                product: el.product as Product,
                 count: el.count as number,
-            } as CartProductModel);
+            } as CartProduct);
         });
-        this.updateCartData();
+        return data;
     }
 
-    addProduct(product: ProductModel): void {
-        let cartProduct = this.cartProducts.find(
-            (o) => o.product.id === product.id
-        );
-        if (cartProduct) {
-            cartProduct.count++;
-        } else {
-            cartProduct = {
-                product,
-                count: 1,
-            } as CartProductModel;
-            this.cartProducts.push(cartProduct);
-        }
-        cartProduct.product.availableCount--;
-        this.communicator.publishData(product);
-        this.updateCartData();
-    }
-
-    removeProduct(cartProduct: CartProductModel): void {
-        cartProduct.product.availableCount += cartProduct.count;
-        this.cartProducts.splice(
-            this.cartProducts.findIndex((o) => o === cartProduct),
-            1
-        );
-        this.communicator.publishData(cartProduct.product);
-        this.updateCartData();
-    }
-
-    increaseQuantity(cartProduct: CartProductModel): void {
-        cartProduct.count++;
-        cartProduct.product.availableCount--;
-        this.communicator.publishData(cartProduct.product);
-        this.updateCartData();
-    }
-
-    decreaseQuantity(cartProduct: CartProductModel): void {
-        cartProduct.count--;
-        cartProduct.product.availableCount++;
-        this.communicator.publishData(cartProduct.product);
-        this.updateCartData();
-    }
-
-    removeAllProducts(): void {
-        this.cartProducts = [];
-        this.updateCartData();
-    }
-
-    buyAllProducts(): void {
-        this.cartProducts = [];
-        this.localStorageService.setItem('CART_PRODUCTS', this.cartProducts);
-    }
-
-    hasCartProducts(): boolean {
-        return this.cartProducts.length > 0;
-    }
-
-    updateCartData(): void {
-        this.totalQuantity = this.cartProducts.reduce(
-            (prev, cur) => prev + cur.count,
-            0
-        );
-        this.totalSum = this.cartProducts.reduce(
-            (prev, cur) => prev + cur.count * cur.product.price,
-            0
-        );
-        this.localStorageService.setItem('CART_PRODUCTS', this.cartProducts);
+    updateStorageData(cartProducts: CartProduct[]): void {
+        this.localStorageService.setItem('CART_PRODUCTS', cartProducts);
     }
 }
