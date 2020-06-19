@@ -5,7 +5,7 @@
       "name": "Name 1",
       "description": "Description 1ll",
       "price": 10,
-      "availableCount": 5,
+      "availableCount": 50,
       "category": "Test Category 1"
     },
     {
@@ -21,11 +21,11 @@
       "name": "Name 3",
       "description": "Description 3",
       "price": 30,
-      "availableCount": 1,
+      "availableCount": 0,
       "category": "Test Category 1"
     }
   ],
-  "orders": [
+  "order": [
     {
       "id": "1591472586770",
       "date": "2020-06-05T19:00:06.772Z",

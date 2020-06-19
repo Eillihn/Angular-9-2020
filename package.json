@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "scripts": {
         "ng": "ng",
-        "start": "concurrently --kill-others \"ng serve -o\" \"json-server --watch db\/db.json\"",
+        "start": "concurrently --kill-others \"ng serve -o\" \"json-server --watch db/db.json\"",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
@@ -21,6 +21,13 @@
         "@angular/platform-browser": "~9.1.4",
         "@angular/platform-browser-dynamic": "~9.1.4",
         "@angular/router": "~9.1.4",
+        "@ngrx/data": "^9.2.0",
+        "@ngrx/effects": "^9.2.0",
+        "@ngrx/entity": "^9.2.0",
+        "@ngrx/router-store": "^9.2.0",
+        "@ngrx/schematics": "^9.2.0",
+        "@ngrx/store": "^9.2.0",
+        "@ngrx/store-devtools": "^9.2.0",
         "rxjs": "~6.5.4",
         "tslib": "^1.10.0",
         "zone.js": "~0.10.2"

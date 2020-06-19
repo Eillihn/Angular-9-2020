@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
-import { CartProductModel } from 'src/app/core/models';
-import { CartService } from 'src/app/core/services';
+import { CartProduct } from 'src/app/core/models';
+import { CartFacade } from 'src/app/core/@ngrx';
 
 @Component({
     selector: 'app-cart-list',
@@ -19,23 +20,28 @@ export class CartListComponent implements OnInit {
         'Count',
         'Actions',
     ];
-    cartProducts: CartProductModel[];
+    cartProducts$: Observable<ReadonlyArray<CartProduct>>;
+    totalQuantity$: Observable<number>;
+    totalSum$: Observable<number>;
     sortForm = new FormControl();
     sortList: string[] = ['price', 'quantity', 'name'];
     sortDirection: boolean = false;
 
-    constructor(public cartService: CartService) {
+    constructor(private cartFacade: CartFacade) {
     }
 
     ngOnInit(): void {
-        this.cartProducts = this.cartService.cartProducts;
+        this.cartProducts$ = this.cartFacade.cartProducts$;
+        this.totalQuantity$ = this.cartFacade.totalQuantity$;
+        this.totalSum$ = this.cartFacade.totalSum$;
     }
 
-    getTotalQuantity(): number {
-        return this.cartService.totalQuantity;
+    changeSortName(sortName): void {
+        this.cartFacade.setSortName({ sortName });
     }
 
-    getTotalSum(): number {
-        return this.cartService.totalSum;
+    changeDirection(): void {
+        this.sortDirection = !this.sortDirection;
+        this.cartFacade.setDirection({ sortDirection: this.sortDirection });
     }
 }

@@ -1,7 +1,7 @@
 <div class="container">
     <button
         (click)="onMakeOrder()"
-        *ngIf="cartService.hasCartProducts(); else cartEmpty"
+        *ngIf="(cartState$ | async).data.length > 0; else cartEmpty"
         color="primary"
         mat-raised-button
     >

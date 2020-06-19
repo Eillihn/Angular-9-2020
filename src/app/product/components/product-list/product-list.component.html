@@ -1,5 +1,5 @@
 <div [ngClass]="{ editable: editable }" class="items-container">
-    <div *ngFor="let product of products | async" class="item">
+    <div *ngFor="let product of (products$ | async)" class="item">
         <app-product
             (buyProduct)="onBuyProduct($event)"
             (deleteProduct)="onDeleteProduct($event)"
@@ -9,4 +9,5 @@
             [product]="product"
         ></app-product>
     </div>
+    <p *ngIf="(productsError$ | async) as value">{{value}}</p>
 </div>

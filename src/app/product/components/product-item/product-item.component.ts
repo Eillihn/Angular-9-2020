@@ -1,16 +1,5 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    EventEmitter,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output,
-} from '@angular/core';
-import { Subscription } from 'rxjs';
-import { ProductModel } from 'src/app/core/models';
-import { ProductCommunicatorService } from 'src/app/core/services';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, } from '@angular/core';
+import { Product } from 'src/app/core/models';
 
 @Component({
     selector: 'app-product',
@@ -18,32 +7,17 @@ import { ProductCommunicatorService } from 'src/app/core/services';
     styleUrls: ['./product-item.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductItemComponent implements OnInit, OnDestroy {
-    @Input() product: ProductModel;
+export class ProductItemComponent {
+    @Input() product: Product;
     @Input() editable: boolean;
-    @Output() buyProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
-    @Output() goToProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
-    @Output() editProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
-    @Output() deleteProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
-    private sub: Subscription;
+    @Output() buyProduct: EventEmitter<Product> = new EventEmitter<Product>();
+    @Output() goToProduct: EventEmitter<Product> = new EventEmitter<Product>();
+    @Output() editProduct: EventEmitter<Product> = new EventEmitter<Product>();
+    @Output() deleteProduct: EventEmitter<Product> = new EventEmitter<Product>();
 
-    constructor(
-        public communicator: ProductCommunicatorService,
-        private cd: ChangeDetectorRef
-    ) {
+    constructor() {
     }
 
-    ngOnInit(): void {
-        this.sub = this.communicator.channel$.subscribe((data) => {
-            if (data.id === this.product.id) {
-                this.cd.detectChanges();
-            }
-        });
-    }
-
-    ngOnDestroy() {
-        this.sub.unsubscribe();
-    }
 
     onBuyProduct() {
         this.buyProduct.emit(this.product);

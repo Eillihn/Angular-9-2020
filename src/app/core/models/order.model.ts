@@ -1,11 +1,11 @@
-import { CartProductModel } from './cart-product.model';
+import { CartProduct } from './cart-product.model';
 import { OrderStatus } from './order-status.model';
 
-export interface OrderModel {
+export interface Order {
     id: string;
     date: Date;
     status: OrderStatus;
-    cartProducts: CartProductModel[];
+    cartProducts: CartProduct[];
     totalQuantity: number;
     total: number;
 }

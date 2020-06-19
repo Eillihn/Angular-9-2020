@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard, CanDeactivateGuard } from 'src/app/core';
+import { AuthGuard, CanDeactivateGuard, OrdersStatePreloadingGuard, ProductExistsGuard, ProductsStatePreloadingGuard } from 'src/app/core';
 import { ProductFormComponent } from 'src/app/product';
 import { ProductResolveGuard } from './guards';
-import { AdminComponent, AdminDashboardComponent, ManageOrdersComponent, ManageProductsComponent, } from '.';
+import { AdminComponent, AdminDashboardComponent, ManageOrdersComponent, ManageProductsComponent } from '.';
 
 const routes: Routes = [
     {
@@ -12,22 +12,34 @@ const routes: Routes = [
         component: AdminComponent,
         canActivate: [AuthGuard],
         children: [
-            {path: 'orders', component: ManageOrdersComponent},
-            {path: 'products', component: ManageProductsComponent},
             {
-                path: 'products/add',
-                canDeactivate: [CanDeactivateGuard],
-                component: ProductFormComponent,
+                path: 'orders',
+                component: ManageOrdersComponent,
+                canActivate: [OrdersStatePreloadingGuard]
             },
             {
-                path: 'products/edit/:productID',
+                path: 'products',
+                component: ManageProductsComponent,
+                canActivate: [ProductsStatePreloadingGuard]
+            },
+            {
+                path: 'products/add',
                 canDeactivate: [CanDeactivateGuard],
                 component: ProductFormComponent,
                 resolve: {
                     product: ProductResolveGuard,
                 },
             },
-            {path: '', component: AdminDashboardComponent},
+            {
+                path: 'products/edit/:productID',
+                canDeactivate: [CanDeactivateGuard],
+                component: ProductFormComponent,
+                canActivate: [ProductExistsGuard],
+                resolve: {
+                    product: ProductResolveGuard,
+                },
+            },
+            { path: '', component: AdminDashboardComponent },
         ],
     },
 ];

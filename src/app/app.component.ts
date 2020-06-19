@@ -1,6 +1,7 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {AppSettings} from './core/services';
-import {AppSettingsModel} from './core/models/app-settings.model';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+
+import { AppSettings } from './core/services';
+import { AppSettingsModel } from './core/models/app-settings.model';
 
 @Component({
     selector: 'app-root',

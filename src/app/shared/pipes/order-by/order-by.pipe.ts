@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CartProductModel } from 'src/app/core/models';
+import { CartProduct } from 'src/app/core/models';
 
 @Pipe({
     name: 'orderBy',
@@ -7,11 +7,15 @@ import { CartProductModel } from 'src/app/core/models';
 })
 export class OrderByPipe implements PipeTransform {
     transform(
-        value: CartProductModel[],
+        value: CartProduct[],
         propertyName: string,
         direction: boolean
-    ): CartProductModel[] {
-        return value.sort((a, b) => {
+    ): CartProduct[] {
+        if (!value) {
+            return [];
+        }
+        const data = [...value];
+        return data.sort((a, b) => {
             switch (propertyName) {
                 case 'price':
                     return this.compare(

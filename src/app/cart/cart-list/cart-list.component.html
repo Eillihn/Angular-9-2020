@@ -1,17 +1,16 @@
 <div class="container">
-    <div *ngIf="cartProducts.length" class="sort">
+    <div *ngIf="(cartProducts$ | async).length" class="sort">
         <mat-form-field>
             <mat-label>Order By</mat-label>
-            <mat-select [formControl]="sortForm">
+            <mat-select [formControl]="sortForm" (selectionChange)="changeSortName($event.value)">
                 <mat-option
                     *ngFor="let sortName of sortList"
                     [value]="sortName"
-                >{{ sortName | titlecase }}</mat-option
-                >
+                >{{ sortName | titlecase }}</mat-option>
             </mat-select>
         </mat-form-field>
         <button
-            (click)="sortDirection = !sortDirection"
+            (click)="changeDirection()"
             *ngIf="sortForm.value"
             class="sort-arrow"
             mat-stroked-button
@@ -20,23 +19,19 @@
             <mat-icon *ngIf="!sortDirection">arrow_downward</mat-icon>
         </button>
     </div>
-    <div *ngIf="cartProducts.length; else emptyCart" class="items-container">
+    <div *ngIf="(cartProducts$ | async).length; else emptyCart" class="items-container">
         <div class="column-rows">
             <h3 *ngFor="let column of displayedColumns" class="column-cell">
                 {{ column }}
             </h3>
         </div>
         <app-cart-item
-            *ngFor="
-                let cartProduct of cartProducts
-                    | orderBy: sortForm.value:sortDirection
-            "
+            *ngFor="let cartProduct of cartProducts$ | async"
             [cartProduct]="cartProduct"
             appHighlight
-            class="column-rows"
-        ></app-cart-item>
+            class="column-rows"></app-cart-item>
         <div class="column-rows">
-            <h3>Total: {{ getTotalSum() | currency }}</h3>
+            <h3>Total: {{ totalSum$ | async | currency }}</h3>
         </div>
     </div>
     <ng-template #emptyCart>
