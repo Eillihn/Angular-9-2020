@@ -7,6 +7,7 @@ import { HighlightDirective } from './directives/highlight/highlight.directive';
 import { ZoomDirective } from './directives/zoom/zoom.directive';
 import { MaterialModule } from './material.module';
 import { OrderByPipe } from './pipes';
+import { ValidatorsModule } from './validators/validators.module';
 
 @NgModule({
     declarations: [HighlightDirective, ZoomDirective, OrderByPipe],
@@ -17,6 +18,7 @@ import { OrderByPipe } from './pipes';
         OrderByPipe,
         CommonModule,
         FormsModule,
+        ValidatorsModule,
         BrowserAnimationsModule,
     ],
 })

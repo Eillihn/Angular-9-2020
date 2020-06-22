@@ -80,3 +80,12 @@ if fail - try with 2 retry to receive it from assets/app-settings.json.
 - @ngrx/router-store is being add;
 - @ngrx/entity is being use for products;
 - @ngrx/data is being for orders.
+
+# 2020-06-22: Task 8. Forms
+- Reactive form ProcessOrderComponent was being created with fields:
+    - first name (required) + validators: Validators.required, CustomValidators.firstName;
+    - last name;
+    - email (required) + validators: Validators.required, Validators.email, custom AsyncEmailValidatorDirective;
+    - phones (with possibility to input multiple contact numbers and remove them);
+    - pickup checkbox: if true - address field is hidden;
+    - address.
