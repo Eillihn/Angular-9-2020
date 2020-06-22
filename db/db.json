@@ -13,7 +13,7 @@
       "name": "Name 2",
       "description": "Description 2",
       "price": 20,
-      "availableCount": 2,
+      "availableCount": 5,
       "category": "Test Category 2"
     },
     {
@@ -21,43 +21,63 @@
       "name": "Name 3",
       "description": "Description 3",
       "price": 30,
-      "availableCount": 0,
+      "availableCount": 1,
       "category": "Test Category 1"
     }
   ],
   "order": [
     {
-      "id": "1591472586770",
-      "date": "2020-06-05T19:00:06.772Z",
-      "status": "CLOSED",
+      "id": "1592854316974",
       "cartProducts": {
         "0": {
           "product": {
+            "id": "2",
+            "name": "Name 2",
+            "description": "Description 2",
+            "price": 20,
+            "availableCount": 1,
+            "category": "Test Category 2"
+          },
+          "count": 1
+        },
+        "1": {
+          "product": {
             "id": "1",
             "name": "Name 1",
-            "description": "Description 1",
+            "description": "Description 1ll",
             "price": 10,
-            "availableCount": 4,
+            "availableCount": 48,
             "category": "Test Category 1"
           },
-          "count": 2
+          "count": 1
         }
       },
       "totalQuantity": 2,
-      "total": 20
+      "total": 30,
+      "firstName": "First Name 1",
+      "lastName": "Last Name 1",
+      "email": "email1@mail.ru",
+      "pickup": false,
+      "address": "Address1",
+      "phones": [
+        {
+          "phone": "123-456-789"
+        },
+        {
+          "phone": "987-654-321"
+        }
+      ]
     },
     {
-      "id": "1591472586772",
-      "date": "2020-06-06T19:43:06.772Z",
-      "status": "OPEN",
+      "id": "1592855079310",
       "cartProducts": {
         "0": {
           "product": {
             "id": "1",
             "name": "Name 1",
-            "description": "Description 1",
+            "description": "Description 1ll",
             "price": 10,
-            "availableCount": 4,
+            "availableCount": 47,
             "category": "Test Category 1"
           },
           "count": 1
@@ -68,34 +88,24 @@
             "name": "Name 2",
             "description": "Description 2",
             "price": 20,
-            "availableCount": 1,
+            "availableCount": 0,
             "category": "Test Category 2"
           },
           "count": 1
         }
       },
       "totalQuantity": 2,
-      "total": 30
-    },
-    {
-      "id": "1591813565584",
-      "date": "2020-06-10T18:26:05.584Z",
-      "status": "OPEN",
-      "cartProducts": {
-        "0": {
-          "product": {
-            "id": "1",
-            "name": "Name 1",
-            "description": "Description 1ll",
-            "price": 10,
-            "availableCount": 4,
-            "category": "Test Category 1"
-          },
-          "count": 1
+      "total": 30,
+      "firstName": "First Name 2",
+      "lastName": "",
+      "email": "email2@gmail.com",
+      "pickup": true,
+      "address": "",
+      "phones": [
+        {
+          "phone": "123"
         }
-      },
-      "totalQuantity": 1,
-      "total": 10
+      ]
     }
   ]
 }

@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~reset-css';
 @import '~@angular/material/theming';
+
 
 html,
 body {
@@ -16,18 +18,9 @@ body {
     max-width: 800px;
 }
 
-ul,
-li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: inline-block;
-}
-
 mat-icon {
     padding: 0 5px;
 }
-
 
 $primary: mat-palette($mat-blue);
 $accent: mat-palette($mat-grey);

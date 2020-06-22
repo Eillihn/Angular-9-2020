@@ -1,11 +1,16 @@
 <mat-card class="order">
     <mat-card-header>
-        <mat-card-subtitle> {{ order.date | date }}</mat-card-subtitle>
         <mat-card-title>{{ order.id }}</mat-card-title>
+        <mat-card-subtitle>Total: {{ order.total | currency }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <div>Status: {{ order.status }}</div>
-        <div>Total Quantity: {{ order.totalQuantity }}</div>
-        <div>Total: {{ order.total | currency }}</div>
+        <div>User: {{ order.firstName }} {{ order.lastName }}</div>
+        <div>Email: {{ order.email }}</div>
+        <div>Phones:
+            <span *ngFor="let el of order.phones; let last = last">
+                {{ el.phone }}{{!last ? ' | ' : ''}}
+            </span>
+        </div>
+        <div>Delivery: {{ order.pickup ? 'pickup' : order.address }}</div>
     </mat-card-content>
 </mat-card>
