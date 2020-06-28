@@ -9,5 +9,5 @@
             [product]="product"
         ></app-product>
     </div>
-    <p *ngIf="(productsError$ | async) as value">{{value}}</p>
+    <p *ngIf="(productsError$ | async) as value" class="products-error">{{value}}</p>
 </div>
