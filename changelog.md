@@ -89,3 +89,10 @@ if fail - try with 2 retry to receive it from assets/app-settings.json.
     - phones (with possibility to input multiple contact numbers and remove them);
     - pickup checkbox: if true - address field is hidden;
     - address.
+
+# 2020-06-28: Task 9. Unit Tests
+- Integrated tests were added for ProductListComponent, ProductItemComponent;
+- Isolated test was added for ProductsService;
+- Isolated test was added for OrderByPipe;
+- Test was added for AppComponent;
+- Coverage report was added.

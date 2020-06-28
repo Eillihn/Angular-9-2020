@@ -1,6 +1,6 @@
 <mat-card class="product">
     <mat-card-title>
-        <a (click)="onGoToProduct()" color="primary" mat-button>
+        <a (click)="onGoToProduct()" color="primary" mat-button class="go-to-link">
             {{ product.name }}
         </a>
     </mat-card-title>
@@ -12,10 +12,10 @@
     </mat-card-content>
 
     <mat-card-actions *ngIf="editable; else buyBlock">
-        <button (click)="onEditProduct()" color="primary" mat-raised-button>
+        <button (click)="onEditProduct()" color="primary" mat-raised-button class="edit-button">
             Edit
         </button>
-        <button (click)="onDeleteProduct()" color="accent" mat-raised-button>
+        <button (click)="onDeleteProduct()" color="accent" mat-raised-button class="delete-button">
             Delete
         </button>
     </mat-card-actions>
@@ -27,6 +27,7 @@
                 [disabled]="product.availableCount === 0"
                 color="primary"
                 mat-raised-button
+                class="buy-button"
             >
                 Buy
             </button>
